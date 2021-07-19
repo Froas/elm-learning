@@ -2,6 +2,8 @@ module Init exposing (..)
 
 
 import Types exposing (..)
+import Html.Attributes exposing (target)
+import LoL.Types exposing (..)
 
 init : Model 
 init = 
@@ -13,11 +15,11 @@ init =
         [{firstName = "Katarina", lastName = "Du Couteau"
         , fraction = " ", bio = ""
         , photo = "" , abilities = 
-                        { q = { cooldown = 1, damade = 2, range = 3, useType = { target } }
-                        , w = { cooldown = 1, damade = 2, range = 3, useType = { target  } }
-                        , e = { cooldown = 1, damade = 2, range = 3, useType = { target  } }
-                        , r = { cooldown = 1, damade = 2, range = 3, useType = { target  } }
-                        , p=  {cooldown = 1, damade = 2, range = 3, useType = { target  } }
+                        { q = { cooldown = 1, damage = 2, range = 3, useType = Target }
+                        , w = { cooldown = 1, damage = 2, range = 3, useType = Target }
+                        , e = { cooldown = 1, damage = 2, range = 3, useType = AoE }
+                        , r = { cooldown = 1, damage = 2, range = 3, useType = Target }
+                        , p=  { cooldown = 1, damage = 2, range = 3, useType = AoE }
                         }
         , video = "" }
         --, { firstName = "Kindred", lastName = "K" } 
