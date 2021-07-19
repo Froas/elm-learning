@@ -7,14 +7,14 @@ import Html.Attributes exposing (..)
 import LoL.Types exposing (..)
 
 
-mkLegendPage : Legend ->  Html Event
+mkLegendPage : Legend -> Html Event
 mkLegendPage legend  =
     div 
         [ style "weight" "300"
         , style "height" "400"
         ] 
 
-        [ text legend.firstName ]
+        [ text <| String.join " " [ legend.firstName, legend.lastName ] ]
 
 
 view : Legend -> Html Event

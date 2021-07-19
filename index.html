@@ -5038,9 +5038,7 @@ var $author$project$Init$init = {
 	inputValue: '',
 	legends: _List_fromArray(
 		[
-			{firstName: 'Amumu', lastName: 'A'},
-			{firstName: 'Kindred', lastName: 'K'},
-			{firstName: 'Katarina', lastName: 'Du Couteau'}
+			{abilities: '', bio: '', firstName: 'Katarina', fraction: ' ', lastName: 'Du Couteau', photo: '', video: ''}
 		]),
 	page: $author$project$Types$Main,
 	repeatValue: 1
@@ -10691,7 +10689,12 @@ var $author$project$LoL$LegendPage$mkLegendPage = function (legend) {
 			]),
 		_List_fromArray(
 			[
-				$elm$html$Html$text(legend.firstName)
+				$elm$html$Html$text(
+				A2(
+					$elm$core$String$join,
+					' ',
+					_List_fromArray(
+						[legend.firstName, legend.lastName])))
 			]));
 };
 var $author$project$LoL$LegendPage$view = function (legend) {
@@ -10924,7 +10927,7 @@ var $author$project$View$view = function (model) {
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
 	{init: $author$project$Init$init, update: $author$project$Update$update, view: $author$project$View$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Types.Event","aliases":{"LoL.Types.Legend":{"args":[],"type":"{ firstName : String.String, lastName : String.String }"}},"unions":{"Types.Event":{"args":[],"tags":{"Increment":[],"Decrement":[],"Reset":[],"Set":["Basics.Int"],"UpdateCounter":[],"InputHandler":["String.String"],"IncreaseMarginal":[],"Select":[],"SetPageID":["Types.PageID"]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"Types.PageID":{"args":[],"tags":{"Main":[],"Marginal":[],"LoL":[],"LegendPage":["LoL.Types.Legend"]}},"String.String":{"args":[],"tags":{"String":[]}}}}})}});}(this));
+	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Types.Event","aliases":{"LoL.Types.Legend":{"args":[],"type":"{ firstName : String.String, lastName : String.String, fraction : String.String, bio : String.String, photo : String.String, abilities : String.String, video : String.String }"}},"unions":{"Types.Event":{"args":[],"tags":{"Increment":[],"Decrement":[],"Reset":[],"Set":["Basics.Int"],"UpdateCounter":[],"InputHandler":["String.String"],"IncreaseMarginal":[],"Select":[],"SetPageID":["Types.PageID"]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"Types.PageID":{"args":[],"tags":{"Main":[],"Marginal":[],"LoL":[],"LegendPage":["LoL.Types.Legend"]}},"String.String":{"args":[],"tags":{"String":[]}}}}})}});}(this));
 
   var app = Elm.Main.init({ node: document.getElementById("elm") });
 }
