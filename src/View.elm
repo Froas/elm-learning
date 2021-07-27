@@ -47,6 +47,6 @@ view model =
                 ]
 
         LegendPage legend ->
-            div [] [ LoL.LegendPage.view legend ]
+            div [] [ LoL.LegendPage.view model legend ]
 
 

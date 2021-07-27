@@ -2,6 +2,7 @@ module LoL.Types exposing (..)
 
 
 
+
 type UseType 
     = Target
     | AoE
@@ -10,17 +11,22 @@ type UseType
 type alias Ability = 
     { cooldown : Float
     , damage : Float
-    , range : Int 
+    , range : Float
+    , castTime : String
     , useType : UseType
+    , video : String
+    , name : String
     }
 
 type alias Abilities =
-    { q : Ability
+    { p : Ability
+    , q : Ability
     , w : Ability
     , e : Ability
     , r : Ability
-    , p : Ability
+    , spotlight : String
     }
+
 
 type alias Legend =
     { firstName : String
@@ -29,7 +35,6 @@ type alias Legend =
     , bio : String
     , photo : String
     , abilities : Abilities
-    , video : String
     }
 
 

@@ -3,6 +3,8 @@ module Update exposing (..)
 
 import Maybe exposing (withDefault)
 import Types exposing (..)
+import LoL.Types exposing (..)
+import Html exposing (legend)
 
 update : Event -> Model -> Model
 update event model =
@@ -28,9 +30,13 @@ update event model =
         IncreaseMarginal ->
             { model |  repeatValue = if model.repeatValue < 10 then 2 + model.repeatValue else 10 }
 
-        Select -> model
+        Select legend -> 
+            { model | page = LegendPage legend , currLegend = legend } 
 
         SetPageID pageID -> 
             { model | page = pageID }
+
+        ShowAbilityDesc x ->
+            { model | currAbility = x }
 
 

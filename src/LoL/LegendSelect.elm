@@ -20,9 +20,10 @@ mkLegend legend =
         , style "display" "flex"
         , style "align-items" "center"
         , style "justify-content" "center"
-        , onClick <| SetPageID <| LegendPage legend
+        , onClick <| Select legend 
         ]
         [ text legend.firstName ] 
+    
         
 view : Model -> Html Event
 view model = 

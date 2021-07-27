@@ -11,8 +11,9 @@ type Event
     | UpdateCounter
     | InputHandler String
     | IncreaseMarginal
-    | Select 
+    | Select Legend
     | SetPageID PageID
+    | ShowAbilityDesc Ability
     
 type alias Model = 
     { countedValue : Int
@@ -20,6 +21,8 @@ type alias Model =
     , repeatValue : Int
     , page : PageID
     , legends : List Legend
+    , currAbility : Ability
+    , currLegend : Legend
     }
 
 type PageID 

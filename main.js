@@ -1,17 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Main</title>
-  <style>body { padding: 0; margin: 0; }</style>
-</head>
-
-<body>
-
-<pre id="elm"></pre>
-
-<script>
-try {
 (function(scope){
 'use strict';
 
@@ -4454,26 +4440,44 @@ var $author$project$Types$LegendPage = function (a) {
 };
 var $author$project$LoL$Types$AoE = {$: 'AoE'};
 var $author$project$LoL$Types$Target = {$: 'Target'};
+var $author$project$Init$kindred = {
+	abilities: {
+		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
+		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
+		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
+		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
+		spotlight: 'https://www.youtube.com/embed/h0Pwn7G-eLE',
+		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
+	},
+	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
+	firstName: 'kindred',
+	fraction: 'Noxus',
+	lastName: ' ',
+	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
+};
+var $author$project$Init$currLegend = $author$project$Init$kindred;
 var $author$project$Init$katarina = {
 	abilities: {
-		e: {cooldown: 14, damage: 15, range: 725, useType: $author$project$LoL$Types$Target},
-		p: {cooldown: 15, damage: 68, range: 300, useType: $author$project$LoL$Types$Target},
-		q: {cooldown: 11, damage: 75, range: 625, useType: $author$project$LoL$Types$Target},
-		r: {cooldown: 90, damage: 375, range: 550, useType: $author$project$LoL$Types$AoE},
-		w: {cooldown: 15, damage: 50, range: 250, useType: $author$project$LoL$Types$AoE}
+		e: {castTime: '0.035', cooldown: 14, damage: 15, name: 'Shunpo', range: 725, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_E1.webm'},
+		p: {castTime: 'None ', cooldown: 15, damage: 68, name: 'Voracity', range: 340, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_P1.webm'},
+		q: {castTime: '0.25', cooldown: 11, damage: 75, name: 'Bouncing Blade', range: 625, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_Q1.webm'},
+		r: {castTime: 'None', cooldown: 90, damage: 375, name: 'Death Lotus', range: 550, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_R1.webm'},
+		spotlight: 'https://www.youtube.com/embed/soCg5RbgYIA',
+		w: {castTime: 'None', cooldown: 15, damage: 50, name: 'Preparation', range: 250, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_W1.webm'}
 	},
-	bio: 'Born to one of the most respected noble families of Noxus, Katarina Du Couteau found herself elevated above others from an early age.',
+	bio: 'Born to one of the most respected noble families of Noxus, Katarina Du Couteau found herself elevated above others from an early age. While her younger sister Cassiopeia took after their politically brilliant mother, Katarina was very much her father’s daughter, and the wily General Du Couteau pushed her to learn the way of the blade; to cut away the empire’s enemies not with reckless brutality, but deadly precision. He was a harsh teacher with many pupils, and notoriously difficult to impress. So it was that Katarina’s childhood—if it can be called such—had little room for kindness or rest. She spent every waking moment honing herself into the ultimate weapon, testing her endurance, her dexterity, her tolerance for pain. She stole poisons from the city’s least reputable apothecaries, testing their efficacy in tiny increments upon herself, gradually building her resistance even as she catalogued their effects. She scaled the tallest towers in the dead of night, unseen by anyone.',
 	firstName: 'Katarina',
 	fraction: 'Noxus',
 	lastName: 'Du Couteau',
-	photo: 'https://cdnportal.mobalytics.gg/production/2021/03/7027b46a-d8jhqfo-aed71994-3e18-46f8-984c-b68c1e356ce7.jpg',
-	video: 'https://www.youtube.com/embed/soCg5RbgYIA'
+	photo: 'https://cdnportal.mobalytics.gg/production/2021/03/7027b46a-d8jhqfo-aed71994-3e18-46f8-984c-b68c1e356ce7.jpg'
 };
 var $author$project$Init$init = {
 	countedValue: 0,
+	currAbility: $author$project$Init$currLegend.abilities.p,
+	currLegend: $author$project$Init$currLegend,
 	inputValue: '',
 	legends: _List_fromArray(
-		[$author$project$Init$katarina]),
+		[$author$project$Init$katarina, $author$project$Init$kindred]),
 	page: $author$project$Types$LegendPage($author$project$Init$katarina),
 	repeatValue: 1
 };
@@ -5257,12 +5261,23 @@ var $author$project$Update$update = F2(
 						repeatValue: (model.repeatValue < 10) ? (2 + model.repeatValue) : 10
 					});
 			case 'Select':
-				return model;
-			default:
+				var legend = event.a;
+				return _Utils_update(
+					model,
+					{
+						currLegend: legend,
+						page: $author$project$Types$LegendPage(legend)
+					});
+			case 'SetPageID':
 				var pageID = event.a;
 				return _Utils_update(
 					model,
 					{page: pageID});
+			default:
+				var x = event.a;
+				return _Utils_update(
+					model,
+					{currAbility: x});
 		}
 	});
 var $author$project$Types$Decrement = {$: 'Decrement'};
@@ -5381,17 +5396,12 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$Attributes$height = function (n) {
-	return A2(
-		_VirtualDom_attribute,
-		'height',
-		$elm$core$String$fromInt(n));
+var $author$project$Types$ShowAbilityDesc = function (a) {
+	return {$: 'ShowAbilityDesc', a: a};
 };
-var $elm$html$Html$iframe = _VirtualDom_node('iframe');
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$iframe = _VirtualDom_node('iframe');
 var $elm$virtual_dom$VirtualDom$property = F2(
 	function (key, value) {
 		return A2(
@@ -5406,100 +5416,250 @@ var $elm$html$Html$Attributes$src = function (url) {
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
-var $elm$html$Html$Attributes$width = function (n) {
+var $author$project$LoL$LoLUpdate$mkAbilityVideo = function (model) {
 	return A2(
-		_VirtualDom_attribute,
-		'width',
-		$elm$core$String$fromInt(n));
+		$elm$html$Html$iframe,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$src(model.currAbility.video),
+				A2(
+				$elm$html$Html$Attributes$property,
+				'frameborder',
+				$elm$json$Json$Encode$string('0')),
+				A2(
+				$elm$html$Html$Attributes$property,
+				'allowfullscreen',
+				$elm$json$Json$Encode$string('true')),
+				$elm$html$Html$Attributes$class('spotlight-video')
+			]),
+		_List_Nil);
 };
-var $author$project$LoL$LegendPage$mkLegendPage = function (legend) {
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $author$project$LoL$LoLUpdate$mkDescription = function (model) {
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'weight', '300'),
-				A2($elm$html$Html$Attributes$style, 'height', '400')
+				$elm$html$Html$Attributes$class('description')
 			]),
 		_List_fromArray(
 			[
 				A2(
-				$elm$html$Html$div,
+				$elm$html$Html$p,
+				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('container')
-					]),
+						$elm$html$Html$text(
+						'Abilities: ' + (model.currAbility.name + ((_Utils_eq(model.currAbility.useType, $author$project$LoL$Types$AoE) ? ' Effect Radius ' : ' Target range ') + ($elm$core$Debug$toString(model.currAbility.range) + (' Cast time: ' + (model.currAbility.castTime + (' Cooldown ' + $elm$core$Debug$toString(model.currAbility.cooldown))))))))
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						$elm$html$Html$img,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$src(legend.photo),
-								$elm$html$Html$Attributes$width(300),
-								$elm$html$Html$Attributes$height(220)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$h1,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text(legend.firstName)
-							])),
-						A2(
-						$elm$html$Html$h1,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text(legend.lastName)
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('green-text')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(legend.fraction)
-							])),
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('scrollable-textbox')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(legend.bio)
-							])),
-						A2($elm$html$Html$p, _List_Nil, _List_Nil),
-						A2(
-						$elm$html$Html$iframe,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$src(legend.video),
-								A2(
-								$elm$html$Html$Attributes$property,
-								'frameborder',
-								$elm$json$Json$Encode$string('0')),
-								A2(
-								$elm$html$Html$Attributes$property,
-								'allowfullscreen',
-								$elm$json$Json$Encode$string('true'))
-							]),
-						_List_Nil)
+						$elm$html$Html$text(' ')
 					]))
 			]));
 };
-var $author$project$LoL$LegendPage$view = function (legend) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$author$project$LoL$LegendPage$mkLegendPage(legend)
-			]));
+var $author$project$LoL$LegendPage$mkLegendPage = F2(
+	function (model, legend) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('main-container')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('first-container')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$img,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('legend-img'),
+									$elm$html$Html$Attributes$src(legend.photo)
+								]),
+							_List_Nil),
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('name')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$p,
+									_List_fromArray(
+										[
+											A2($elm$html$Html$Attributes$style, 'margin-bottom', '30%')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.firstName)
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.lastName)
+										]))
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('fraction')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(legend.fraction)
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('scrollable-textbox')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(legend.bio)
+								]))
+						])),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('second-container')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('skill-menu')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Spotlight')
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.p))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.p.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.q))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.q.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.w))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.w.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.e))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.e.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.r))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.r.name)
+										]))
+								])),
+							$author$project$LoL$LoLUpdate$mkDescription(model),
+							$author$project$LoL$LoLUpdate$mkAbilityVideo(model),
+							A2(
+							$elm$html$Html$button,
+							_List_fromArray(
+								[
+									$elm$html$Html$Events$onClick(
+									$author$project$Types$SetPageID($author$project$Types$Main))
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text('Main')
+								])),
+							A2(
+							$elm$html$Html$button,
+							_List_fromArray(
+								[
+									$elm$html$Html$Events$onClick(
+									$author$project$Types$SetPageID($author$project$Types$LoL))
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text('LoL')
+								]))
+						]))
+				]));
+	});
+var $author$project$LoL$LegendPage$view = F2(
+	function (model, legend) {
+		return A2(
+			$elm$html$Html$div,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2($author$project$LoL$LegendPage$mkLegendPage, model, legend)
+				]));
+	});
+var $author$project$Types$Select = function (a) {
+	return {$: 'Select', a: a};
 };
 var $author$project$LoL$LegendSelect$mkLegend = function (legend) {
 	return A2(
@@ -5516,8 +5676,7 @@ var $author$project$LoL$LegendSelect$mkLegend = function (legend) {
 				A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
 				A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
 				$elm$html$Html$Events$onClick(
-				$author$project$Types$SetPageID(
-					$author$project$Types$LegendPage(legend)))
+				$author$project$Types$Select(legend))
 			]),
 		_List_fromArray(
 			[
@@ -5712,7 +5871,7 @@ var $author$project$View$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$author$project$LoL$LegendPage$view(legend)
+						A2($author$project$LoL$LegendPage$view, model, legend)
 					]));
 	}
 };
@@ -5720,21 +5879,3 @@ var $author$project$Main$main = $elm$browser$Browser$sandbox(
 	{init: $author$project$Init$init, update: $author$project$Update$update, view: $author$project$View$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
-
-  var app = Elm.Main.init({ node: document.getElementById("elm") });
-}
-catch (e)
-{
-  // display initialization errors (e.g. bad flags, infinite recursion)
-  var header = document.createElement("h1");
-  header.style.fontFamily = "monospace";
-  header.innerText = "Initialization Error";
-  var pre = document.getElementById("elm");
-  document.body.insertBefore(header, pre);
-  pre.innerText = e;
-  throw e;
-}
-</script>
-
-</body>
-</html>

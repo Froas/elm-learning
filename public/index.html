@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAIN</title>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="public/style/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+<body>
+  <div id="myapp"></div>
+  <script>
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp')
+  });
+  </script>
+</body>
+</html>
+
+
+<!-- elm-live src/Main.elm --start-page=public/index.html -- --output=main.js -->
