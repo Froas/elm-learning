@@ -8,6 +8,7 @@ import LoL.Types exposing (Legend)
 import Html.Events exposing (onClick)
 
 
+
 mkLegend : Legend -> Html Event
 mkLegend legend =
     div 
@@ -22,7 +23,7 @@ mkLegend legend =
         , style "justify-content" "center"
         , onClick <| Select legend 
         ]
-        [ text legend.firstName ] 
+        [ text <| String.join " " [ legend.firstName, legend.lastName ] ] 
     
         
 view : Model -> Html Event
@@ -37,12 +38,12 @@ view model =
 
 
 
--- 4 Добавить уникальную страницу каждому герою:
---                                           4.1 Имя
---                                           4.2 Фамилия (может отсутствовать)
---                                           4.3 Фракция принадлежность
---                                           4.4 Био
---                                           4.5 ФОТО мамки
---                                           4.6 Способности и их описание
---                                           4.7 Вставленое видео -- ссылка на spotlight чампиона 
--- 5.0 Работать адаптивно :/ хуй пизда сковорода 
+-- 1. Убрать все кнопки роутинга с сайта
+-- 2. Создать header:
+--                  2.1 Header должен быть на каждой странице сверху 
+--                  2.2 Добавить кнопки роутинга 
+-- 3. Заменить свой роутер на роутер Elm (задание на типы)
+-- 4. Глобавльный рефакторинг кода 
+-- 5. Создание бэкенда на nodejs/ts
+-- 6. Изучить promise
+-- P.S. в свободное время изучать/делать разные компоненты - посмотреть material UI 

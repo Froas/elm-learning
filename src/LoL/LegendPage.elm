@@ -40,7 +40,7 @@ mkLegendPage model legend  =
             [ div 
                 [ class "skill-menu" ]
 
-                [ div [ class "skill-menu-item" ] [ text "Spotlight" ]
+                [ div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.spotlight ] [ text "Spotlight" ]
                 , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.p ] [ text legend.abilities.p.name ]
                 , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.q ] [ text legend.abilities.q.name ]
                 , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.w ] [ text legend.abilities.w.name ]
@@ -51,8 +51,6 @@ mkLegendPage model legend  =
             , mkDescription model
 
             , mkAbilityVideo model
-            , button [ onClick <| SetPageID Main ] [ text "Main" ]
-            , button [ onClick <| SetPageID LoL ] [ text "LoL" ]
 
             ]
 

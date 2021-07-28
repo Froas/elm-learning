@@ -4,23 +4,17 @@ module Init exposing (..)
 import Types exposing (..)
 import LoL.Types exposing (..)
 
-
-
-
 init : Model 
 init = 
     { countedValue = 0
     , inputValue = ""
     , repeatValue = 1
-    , page = LegendPage katarina
+    , page = Main
     , legends = 
         [ katarina, kindred ] 
-    , currLegend = currLegend
-    , currAbility = currLegend.abilities.p
+    , currLegend = katarina
+    , currAbility = katarina.abilities.spotlight
     }
-
-currLegend : Legend
-currLegend = kindred
 
 katarina : Legend
 katarina = 
@@ -35,15 +29,14 @@ katarina =
         , w = { cooldown = 15, damage = 50, range = 250, useType = AoE, name = "Preparation", castTime = "None", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_W1.webm" }
         , e = { cooldown = 14, damage = 15, range = 725, useType = Target, name = "Shunpo", castTime = "0.035", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_E1.webm" }
         , r = { cooldown = 90, damage = 375, range = 550, useType = AoE, name = "Death Lotus", castTime = "None", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_R1.webm" }
-        , spotlight = "https://www.youtube.com/embed/soCg5RbgYIA" 
+        , spotlight = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Lamb's Respite", castTime = "None", video = "https://www.youtube.com/embed/soCg5RbgYIA" }
  
         }
     }
 
-
 kindred : Legend
 kindred = 
-    { firstName = "kindred"
+    { firstName = "Kindred"
     , lastName = " "
     , fraction = "Noxus"
     , bio = "Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. "
@@ -54,7 +47,7 @@ kindred =
         , w = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Wolf's Frenzy", castTime = "None", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm" }
         , e = { cooldown = 1, damage = 1, range = 1, useType = Target, name = "Mounting Dread", castTime = "0.035", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm" }
         , r = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Lamb's Respite", castTime = "None", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm" }
-        , spotlight = "https://www.youtube.com/embed/h0Pwn7G-eLE" 
+        , spotlight = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Lamb's Respite", castTime = "None", video = "https://www.youtube.com/embed/h0Pwn7G-eLE" }
  
         }
     }

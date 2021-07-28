@@ -24,7 +24,7 @@ type alias Abilities =
     , w : Ability
     , e : Ability
     , r : Ability
-    , spotlight : String
+    , spotlight : Ability
     }
 
 

@@ -4435,34 +4435,16 @@ var $elm$core$Set$toList = function (_v0) {
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
-var $author$project$Types$LegendPage = function (a) {
-	return {$: 'LegendPage', a: a};
-};
+var $author$project$Types$Main = {$: 'Main'};
 var $author$project$LoL$Types$AoE = {$: 'AoE'};
 var $author$project$LoL$Types$Target = {$: 'Target'};
-var $author$project$Init$kindred = {
-	abilities: {
-		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
-		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
-		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
-		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
-		spotlight: 'https://www.youtube.com/embed/h0Pwn7G-eLE',
-		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
-	},
-	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
-	firstName: 'kindred',
-	fraction: 'Noxus',
-	lastName: ' ',
-	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
-};
-var $author$project$Init$currLegend = $author$project$Init$kindred;
 var $author$project$Init$katarina = {
 	abilities: {
 		e: {castTime: '0.035', cooldown: 14, damage: 15, name: 'Shunpo', range: 725, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_E1.webm'},
 		p: {castTime: 'None ', cooldown: 15, damage: 68, name: 'Voracity', range: 340, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_P1.webm'},
 		q: {castTime: '0.25', cooldown: 11, damage: 75, name: 'Bouncing Blade', range: 625, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_Q1.webm'},
 		r: {castTime: 'None', cooldown: 90, damage: 375, name: 'Death Lotus', range: 550, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_R1.webm'},
-		spotlight: 'https://www.youtube.com/embed/soCg5RbgYIA',
+		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/soCg5RbgYIA'},
 		w: {castTime: 'None', cooldown: 15, damage: 50, name: 'Preparation', range: 250, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_W1.webm'}
 	},
 	bio: 'Born to one of the most respected noble families of Noxus, Katarina Du Couteau found herself elevated above others from an early age. While her younger sister Cassiopeia took after their politically brilliant mother, Katarina was very much her father’s daughter, and the wily General Du Couteau pushed her to learn the way of the blade; to cut away the empire’s enemies not with reckless brutality, but deadly precision. He was a harsh teacher with many pupils, and notoriously difficult to impress. So it was that Katarina’s childhood—if it can be called such—had little room for kindness or rest. She spent every waking moment honing herself into the ultimate weapon, testing her endurance, her dexterity, her tolerance for pain. She stole poisons from the city’s least reputable apothecaries, testing their efficacy in tiny increments upon herself, gradually building her resistance even as she catalogued their effects. She scaled the tallest towers in the dead of night, unseen by anyone.',
@@ -4471,14 +4453,29 @@ var $author$project$Init$katarina = {
 	lastName: 'Du Couteau',
 	photo: 'https://cdnportal.mobalytics.gg/production/2021/03/7027b46a-d8jhqfo-aed71994-3e18-46f8-984c-b68c1e356ce7.jpg'
 };
+var $author$project$Init$kindred = {
+	abilities: {
+		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
+		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
+		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
+		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
+		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/h0Pwn7G-eLE'},
+		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
+	},
+	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
+	firstName: 'Kindred',
+	fraction: 'Noxus',
+	lastName: ' ',
+	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
+};
 var $author$project$Init$init = {
 	countedValue: 0,
-	currAbility: $author$project$Init$currLegend.abilities.p,
-	currLegend: $author$project$Init$currLegend,
+	currAbility: $author$project$Init$katarina.abilities.spotlight,
+	currLegend: $author$project$Init$katarina,
 	inputValue: '',
 	legends: _List_fromArray(
 		[$author$project$Init$katarina, $author$project$Init$kindred]),
-	page: $author$project$Types$LegendPage($author$project$Init$katarina),
+	page: $author$project$Types$Main,
 	repeatValue: 1
 };
 var $elm$core$Result$Err = function (a) {
@@ -5211,6 +5208,9 @@ var $elm$browser$Browser$sandbox = function (impl) {
 			view: impl.view
 		});
 };
+var $author$project$Types$LegendPage = function (a) {
+	return {$: 'LegendPage', a: a};
+};
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
 		if (maybe.$ === 'Just') {
@@ -5287,7 +5287,6 @@ var $author$project$Types$InputHandler = function (a) {
 	return {$: 'InputHandler', a: a};
 };
 var $author$project$Types$LoL = {$: 'LoL'};
-var $author$project$Types$Main = {$: 'Main'};
 var $author$project$Types$Marginal = {$: 'Marginal'};
 var $author$project$Types$Reset = {$: 'Reset'};
 var $author$project$Types$Set = function (a) {
@@ -5299,6 +5298,7 @@ var $author$project$Types$SetPageID = function (a) {
 var $author$project$Types$UpdateCounter = {$: 'UpdateCounter'};
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$header = _VirtualDom_node('header');
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
@@ -5554,7 +5554,9 @@ var $author$project$LoL$LegendPage$mkLegendPage = F2(
 									$elm$html$Html$div,
 									_List_fromArray(
 										[
-											$elm$html$Html$Attributes$class('skill-menu-item')
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.spotlight))
 										]),
 									_List_fromArray(
 										[
@@ -5622,29 +5624,7 @@ var $author$project$LoL$LegendPage$mkLegendPage = F2(
 										]))
 								])),
 							$author$project$LoL$LoLUpdate$mkDescription(model),
-							$author$project$LoL$LoLUpdate$mkAbilityVideo(model),
-							A2(
-							$elm$html$Html$button,
-							_List_fromArray(
-								[
-									$elm$html$Html$Events$onClick(
-									$author$project$Types$SetPageID($author$project$Types$Main))
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Main')
-								])),
-							A2(
-							$elm$html$Html$button,
-							_List_fromArray(
-								[
-									$elm$html$Html$Events$onClick(
-									$author$project$Types$SetPageID($author$project$Types$LoL))
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('LoL')
-								]))
+							$author$project$LoL$LoLUpdate$mkAbilityVideo(model)
 						]))
 				]));
 	});
@@ -5680,7 +5660,12 @@ var $author$project$LoL$LegendSelect$mkLegend = function (legend) {
 			]),
 		_List_fromArray(
 			[
-				$elm$html$Html$text(legend.firstName)
+				$elm$html$Html$text(
+				A2(
+					$elm$core$String$join,
+					' ',
+					_List_fromArray(
+						[legend.firstName, legend.lastName])))
 			]));
 };
 var $author$project$LoL$LegendSelect$view = function (model) {
@@ -5696,81 +5681,16 @@ var $author$project$LoL$LegendSelect$view = function (model) {
 		A2($elm$core$List$map, $author$project$LoL$LegendSelect$mkLegend, model.legends));
 };
 var $author$project$View$view = function (model) {
-	var _v0 = model.page;
-	switch (_v0.$) {
-		case 'Main':
-			return A2(
-				$elm$html$Html$div,
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$header,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick($author$project$Types$Decrement)
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('-')
-							])),
-						A2(
-						$elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text(
-								$elm$core$String$fromInt(model.countedValue))
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick($author$project$Types$Increment)
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('+')
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick($author$project$Types$Reset)
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('reset')
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$Set(15))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('set to 15')
-							])),
-						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$placeholder('Write a number'),
-								$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('press')
-							])),
 						A2(
 						$elm$html$Html$button,
 						_List_fromArray(
@@ -5792,88 +5712,139 @@ var $author$project$View$view = function (model) {
 						_List_fromArray(
 							[
 								$elm$html$Html$text('Marginal')
+							])),
+						A2(
+						$elm$html$Html$button,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Types$SetPageID($author$project$Types$Main))
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Main')
 							]))
-					]));
-		case 'Marginal':
-			return A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('increase marginal')
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$Main))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Main')
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$LoL))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('LoL')
-							])),
-						$author$project$MarginalSquare$mkMarginals(model)
-					]));
-		case 'LoL':
-			return A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$Main))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Main')
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$Marginal))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Marginal')
-							])),
-						$author$project$LoL$LegendSelect$view(model)
-					]));
-		default:
-			var legend = _v0.a;
-			return A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2($author$project$LoL$LegendPage$view, model, legend)
-					]));
-	}
+					])),
+				function () {
+				var _v0 = model.page;
+				switch (_v0.$) {
+					case 'Main':
+						return A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+									A2($elm$html$Html$Attributes$style, 'flex', 'row'),
+									A2($elm$html$Html$Attributes$style, 'height', '5%')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$Decrement)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('-')
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text(
+											$elm$core$String$fromInt(model.countedValue))
+										])),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$Increment)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('+')
+										])),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$Reset)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('reset')
+										])),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$Set(15))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('set to 15')
+										])),
+									A2(
+									$elm$html$Html$input,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$placeholder('Write a number'),
+											$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
+										]),
+									_List_Nil),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('press')
+										]))
+								]));
+					case 'Marginal':
+						return A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('increase marginal')
+										])),
+									$author$project$MarginalSquare$mkMarginals(model)
+								]));
+					case 'LoL':
+						return A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$author$project$LoL$LegendSelect$view(model)
+								]));
+					default:
+						var legend = _v0.a;
+						return A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A2($author$project$LoL$LegendPage$view, model, legend)
+								]));
+				}
+			}()
+			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$sandbox(
 	{init: $author$project$Init$init, update: $author$project$Update$update, view: $author$project$View$view});
