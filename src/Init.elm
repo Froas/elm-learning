@@ -1,12 +1,13 @@
 module Init exposing (..)
 
-
+import Browser.Navigation as Nav
+import Url exposing (..)
 import Types exposing (..)
 import LoL.Types exposing (..)
 
-init : Model 
-init = 
-    { countedValue = 0
+init : () -> Url -> Nav.Key -> ( Model, Cmd Event )
+init flags url key = 
+    ({ countedValue = 0
     , inputValue = ""
     , repeatValue = 1
     , page = Main
@@ -14,7 +15,11 @@ init =
         [ katarina, kindred ] 
     , currLegend = katarina
     , currAbility = katarina.abilities.spotlight
+    , key = key
+    , url = url
     }
+    , Cmd.none
+    )
 
 katarina : Legend
 katarina = 
@@ -51,3 +56,7 @@ kindred =
  
         }
     }
+
+subscriptions : Model -> Sub Event
+subscriptions _ =
+  Sub.none

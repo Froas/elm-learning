@@ -80,6 +80,271 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
 console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
 
 
+// EQUALITY
+
+function _Utils_eq(x, y)
+{
+	for (
+		var pair, stack = [], isEqual = _Utils_eqHelp(x, y, 0, stack);
+		isEqual && (pair = stack.pop());
+		isEqual = _Utils_eqHelp(pair.a, pair.b, 0, stack)
+		)
+	{}
+
+	return isEqual;
+}
+
+function _Utils_eqHelp(x, y, depth, stack)
+{
+	if (x === y)
+	{
+		return true;
+	}
+
+	if (typeof x !== 'object' || x === null || y === null)
+	{
+		typeof x === 'function' && _Debug_crash(5);
+		return false;
+	}
+
+	if (depth > 100)
+	{
+		stack.push(_Utils_Tuple2(x,y));
+		return true;
+	}
+
+	/**/
+	if (x.$ === 'Set_elm_builtin')
+	{
+		x = $elm$core$Set$toList(x);
+		y = $elm$core$Set$toList(y);
+	}
+	if (x.$ === 'RBNode_elm_builtin' || x.$ === 'RBEmpty_elm_builtin')
+	{
+		x = $elm$core$Dict$toList(x);
+		y = $elm$core$Dict$toList(y);
+	}
+	//*/
+
+	/**_UNUSED/
+	if (x.$ < 0)
+	{
+		x = $elm$core$Dict$toList(x);
+		y = $elm$core$Dict$toList(y);
+	}
+	//*/
+
+	for (var key in x)
+	{
+		if (!_Utils_eqHelp(x[key], y[key], depth + 1, stack))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+var _Utils_equal = F2(_Utils_eq);
+var _Utils_notEqual = F2(function(a, b) { return !_Utils_eq(a,b); });
+
+
+
+// COMPARISONS
+
+// Code in Generate/JavaScript.hs, Basics.js, and List.js depends on
+// the particular integer values assigned to LT, EQ, and GT.
+
+function _Utils_cmp(x, y, ord)
+{
+	if (typeof x !== 'object')
+	{
+		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
+	}
+
+	/**/
+	if (x instanceof String)
+	{
+		var a = x.valueOf();
+		var b = y.valueOf();
+		return a === b ? 0 : a < b ? -1 : 1;
+	}
+	//*/
+
+	/**_UNUSED/
+	if (typeof x.$ === 'undefined')
+	//*/
+	/**/
+	if (x.$[0] === '#')
+	//*/
+	{
+		return (ord = _Utils_cmp(x.a, y.a))
+			? ord
+			: (ord = _Utils_cmp(x.b, y.b))
+				? ord
+				: _Utils_cmp(x.c, y.c);
+	}
+
+	// traverse conses until end of a list or a mismatch
+	for (; x.b && y.b && !(ord = _Utils_cmp(x.a, y.a)); x = x.b, y = y.b) {} // WHILE_CONSES
+	return ord || (x.b ? /*GT*/ 1 : y.b ? /*LT*/ -1 : /*EQ*/ 0);
+}
+
+var _Utils_lt = F2(function(a, b) { return _Utils_cmp(a, b) < 0; });
+var _Utils_le = F2(function(a, b) { return _Utils_cmp(a, b) < 1; });
+var _Utils_gt = F2(function(a, b) { return _Utils_cmp(a, b) > 0; });
+var _Utils_ge = F2(function(a, b) { return _Utils_cmp(a, b) >= 0; });
+
+var _Utils_compare = F2(function(x, y)
+{
+	var n = _Utils_cmp(x, y);
+	return n < 0 ? $elm$core$Basics$LT : n ? $elm$core$Basics$GT : $elm$core$Basics$EQ;
+});
+
+
+// COMMON VALUES
+
+var _Utils_Tuple0_UNUSED = 0;
+var _Utils_Tuple0 = { $: '#0' };
+
+function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+
+function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+
+function _Utils_chr_UNUSED(c) { return c; }
+function _Utils_chr(c) { return new String(c); }
+
+
+// RECORDS
+
+function _Utils_update(oldRecord, updatedFields)
+{
+	var newRecord = {};
+
+	for (var key in oldRecord)
+	{
+		newRecord[key] = oldRecord[key];
+	}
+
+	for (var key in updatedFields)
+	{
+		newRecord[key] = updatedFields[key];
+	}
+
+	return newRecord;
+}
+
+
+// APPEND
+
+var _Utils_append = F2(_Utils_ap);
+
+function _Utils_ap(xs, ys)
+{
+	// append Strings
+	if (typeof xs === 'string')
+	{
+		return xs + ys;
+	}
+
+	// append Lists
+	if (!xs.b)
+	{
+		return ys;
+	}
+	var root = _List_Cons(xs.a, ys);
+	xs = xs.b
+	for (var curr = root; xs.b; xs = xs.b) // WHILE_CONS
+	{
+		curr = curr.b = _List_Cons(xs.a, ys);
+	}
+	return root;
+}
+
+
+
+var _List_Nil_UNUSED = { $: 0 };
+var _List_Nil = { $: '[]' };
+
+function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+
+
+var _List_cons = F2(_List_Cons);
+
+function _List_fromArray(arr)
+{
+	var out = _List_Nil;
+	for (var i = arr.length; i--; )
+	{
+		out = _List_Cons(arr[i], out);
+	}
+	return out;
+}
+
+function _List_toArray(xs)
+{
+	for (var out = []; xs.b; xs = xs.b) // WHILE_CONS
+	{
+		out.push(xs.a);
+	}
+	return out;
+}
+
+var _List_map2 = F3(function(f, xs, ys)
+{
+	for (var arr = []; xs.b && ys.b; xs = xs.b, ys = ys.b) // WHILE_CONSES
+	{
+		arr.push(A2(f, xs.a, ys.a));
+	}
+	return _List_fromArray(arr);
+});
+
+var _List_map3 = F4(function(f, xs, ys, zs)
+{
+	for (var arr = []; xs.b && ys.b && zs.b; xs = xs.b, ys = ys.b, zs = zs.b) // WHILE_CONSES
+	{
+		arr.push(A3(f, xs.a, ys.a, zs.a));
+	}
+	return _List_fromArray(arr);
+});
+
+var _List_map4 = F5(function(f, ws, xs, ys, zs)
+{
+	for (var arr = []; ws.b && xs.b && ys.b && zs.b; ws = ws.b, xs = xs.b, ys = ys.b, zs = zs.b) // WHILE_CONSES
+	{
+		arr.push(A4(f, ws.a, xs.a, ys.a, zs.a));
+	}
+	return _List_fromArray(arr);
+});
+
+var _List_map5 = F6(function(f, vs, ws, xs, ys, zs)
+{
+	for (var arr = []; vs.b && ws.b && xs.b && ys.b && zs.b; vs = vs.b, ws = ws.b, xs = xs.b, ys = ys.b, zs = zs.b) // WHILE_CONSES
+	{
+		arr.push(A5(f, vs.a, ws.a, xs.a, ys.a, zs.a));
+	}
+	return _List_fromArray(arr);
+});
+
+var _List_sortBy = F2(function(f, xs)
+{
+	return _List_fromArray(_List_toArray(xs).sort(function(a, b) {
+		return _Utils_cmp(f(a), f(b));
+	}));
+});
+
+var _List_sortWith = F2(function(f, xs)
+{
+	return _List_fromArray(_List_toArray(xs).sort(function(a, b) {
+		var ord = A2(f, a, b);
+		return ord === $elm$core$Basics$EQ ? 0 : ord === $elm$core$Basics$LT ? -1 : 1;
+	}));
+});
+
+
+
 var _JsArray_empty = [];
 
 function _JsArray_singleton(value)
@@ -525,271 +790,6 @@ function _Debug_regionToString(region)
 	}
 	return 'on lines ' + region.start.line + ' through ' + region.end.line;
 }
-
-
-
-// EQUALITY
-
-function _Utils_eq(x, y)
-{
-	for (
-		var pair, stack = [], isEqual = _Utils_eqHelp(x, y, 0, stack);
-		isEqual && (pair = stack.pop());
-		isEqual = _Utils_eqHelp(pair.a, pair.b, 0, stack)
-		)
-	{}
-
-	return isEqual;
-}
-
-function _Utils_eqHelp(x, y, depth, stack)
-{
-	if (x === y)
-	{
-		return true;
-	}
-
-	if (typeof x !== 'object' || x === null || y === null)
-	{
-		typeof x === 'function' && _Debug_crash(5);
-		return false;
-	}
-
-	if (depth > 100)
-	{
-		stack.push(_Utils_Tuple2(x,y));
-		return true;
-	}
-
-	/**/
-	if (x.$ === 'Set_elm_builtin')
-	{
-		x = $elm$core$Set$toList(x);
-		y = $elm$core$Set$toList(y);
-	}
-	if (x.$ === 'RBNode_elm_builtin' || x.$ === 'RBEmpty_elm_builtin')
-	{
-		x = $elm$core$Dict$toList(x);
-		y = $elm$core$Dict$toList(y);
-	}
-	//*/
-
-	/**_UNUSED/
-	if (x.$ < 0)
-	{
-		x = $elm$core$Dict$toList(x);
-		y = $elm$core$Dict$toList(y);
-	}
-	//*/
-
-	for (var key in x)
-	{
-		if (!_Utils_eqHelp(x[key], y[key], depth + 1, stack))
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
-var _Utils_equal = F2(_Utils_eq);
-var _Utils_notEqual = F2(function(a, b) { return !_Utils_eq(a,b); });
-
-
-
-// COMPARISONS
-
-// Code in Generate/JavaScript.hs, Basics.js, and List.js depends on
-// the particular integer values assigned to LT, EQ, and GT.
-
-function _Utils_cmp(x, y, ord)
-{
-	if (typeof x !== 'object')
-	{
-		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
-	}
-
-	/**/
-	if (x instanceof String)
-	{
-		var a = x.valueOf();
-		var b = y.valueOf();
-		return a === b ? 0 : a < b ? -1 : 1;
-	}
-	//*/
-
-	/**_UNUSED/
-	if (typeof x.$ === 'undefined')
-	//*/
-	/**/
-	if (x.$[0] === '#')
-	//*/
-	{
-		return (ord = _Utils_cmp(x.a, y.a))
-			? ord
-			: (ord = _Utils_cmp(x.b, y.b))
-				? ord
-				: _Utils_cmp(x.c, y.c);
-	}
-
-	// traverse conses until end of a list or a mismatch
-	for (; x.b && y.b && !(ord = _Utils_cmp(x.a, y.a)); x = x.b, y = y.b) {} // WHILE_CONSES
-	return ord || (x.b ? /*GT*/ 1 : y.b ? /*LT*/ -1 : /*EQ*/ 0);
-}
-
-var _Utils_lt = F2(function(a, b) { return _Utils_cmp(a, b) < 0; });
-var _Utils_le = F2(function(a, b) { return _Utils_cmp(a, b) < 1; });
-var _Utils_gt = F2(function(a, b) { return _Utils_cmp(a, b) > 0; });
-var _Utils_ge = F2(function(a, b) { return _Utils_cmp(a, b) >= 0; });
-
-var _Utils_compare = F2(function(x, y)
-{
-	var n = _Utils_cmp(x, y);
-	return n < 0 ? $elm$core$Basics$LT : n ? $elm$core$Basics$GT : $elm$core$Basics$EQ;
-});
-
-
-// COMMON VALUES
-
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
-
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
-
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
-
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
-
-
-// RECORDS
-
-function _Utils_update(oldRecord, updatedFields)
-{
-	var newRecord = {};
-
-	for (var key in oldRecord)
-	{
-		newRecord[key] = oldRecord[key];
-	}
-
-	for (var key in updatedFields)
-	{
-		newRecord[key] = updatedFields[key];
-	}
-
-	return newRecord;
-}
-
-
-// APPEND
-
-var _Utils_append = F2(_Utils_ap);
-
-function _Utils_ap(xs, ys)
-{
-	// append Strings
-	if (typeof xs === 'string')
-	{
-		return xs + ys;
-	}
-
-	// append Lists
-	if (!xs.b)
-	{
-		return ys;
-	}
-	var root = _List_Cons(xs.a, ys);
-	xs = xs.b
-	for (var curr = root; xs.b; xs = xs.b) // WHILE_CONS
-	{
-		curr = curr.b = _List_Cons(xs.a, ys);
-	}
-	return root;
-}
-
-
-
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
-
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
-
-
-var _List_cons = F2(_List_Cons);
-
-function _List_fromArray(arr)
-{
-	var out = _List_Nil;
-	for (var i = arr.length; i--; )
-	{
-		out = _List_Cons(arr[i], out);
-	}
-	return out;
-}
-
-function _List_toArray(xs)
-{
-	for (var out = []; xs.b; xs = xs.b) // WHILE_CONS
-	{
-		out.push(xs.a);
-	}
-	return out;
-}
-
-var _List_map2 = F3(function(f, xs, ys)
-{
-	for (var arr = []; xs.b && ys.b; xs = xs.b, ys = ys.b) // WHILE_CONSES
-	{
-		arr.push(A2(f, xs.a, ys.a));
-	}
-	return _List_fromArray(arr);
-});
-
-var _List_map3 = F4(function(f, xs, ys, zs)
-{
-	for (var arr = []; xs.b && ys.b && zs.b; xs = xs.b, ys = ys.b, zs = zs.b) // WHILE_CONSES
-	{
-		arr.push(A3(f, xs.a, ys.a, zs.a));
-	}
-	return _List_fromArray(arr);
-});
-
-var _List_map4 = F5(function(f, ws, xs, ys, zs)
-{
-	for (var arr = []; ws.b && xs.b && ys.b && zs.b; ws = ws.b, xs = xs.b, ys = ys.b, zs = zs.b) // WHILE_CONSES
-	{
-		arr.push(A4(f, ws.a, xs.a, ys.a, zs.a));
-	}
-	return _List_fromArray(arr);
-});
-
-var _List_map5 = F6(function(f, vs, ws, xs, ys, zs)
-{
-	for (var arr = []; vs.b && ws.b && xs.b && ys.b && zs.b; vs = vs.b, ws = ws.b, xs = xs.b, ys = ys.b, zs = zs.b) // WHILE_CONSES
-	{
-		arr.push(A5(f, vs.a, ws.a, xs.a, ys.a, zs.a));
-	}
-	return _List_fromArray(arr);
-});
-
-var _List_sortBy = F2(function(f, xs)
-{
-	return _List_fromArray(_List_toArray(xs).sort(function(a, b) {
-		return _Utils_cmp(f(a), f(b));
-	}));
-});
-
-var _List_sortWith = F2(function(f, xs)
-{
-	return _List_fromArray(_List_toArray(xs).sort(function(a, b) {
-		var ord = A2(f, a, b);
-		return ord === $elm$core$Basics$EQ ? 0 : ord === $elm$core$Basics$LT ? -1 : 1;
-	}));
-});
 
 
 
@@ -4355,31 +4355,16 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $elm$core$List$cons = _List_cons;
-var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
-var $elm$core$Array$foldr = F3(
-	function (func, baseCase, _v0) {
-		var tree = _v0.c;
-		var tail = _v0.d;
-		var helper = F2(
-			function (node, acc) {
-				if (node.$ === 'SubTree') {
-					var subTree = node.a;
-					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
-				} else {
-					var values = node.a;
-					return A3($elm$core$Elm$JsArray$foldr, func, acc, values);
-				}
-			});
-		return A3(
-			$elm$core$Elm$JsArray$foldr,
-			helper,
-			A3($elm$core$Elm$JsArray$foldr, func, baseCase, tail),
-			tree);
-	});
-var $elm$core$Array$toList = function (array) {
-	return A3($elm$core$Array$foldr, $elm$core$List$cons, _List_Nil, array);
+var $author$project$Types$LinkClicked = function (a) {
+	return {$: 'LinkClicked', a: a};
 };
+var $author$project$Types$UrlChanged = function (a) {
+	return {$: 'UrlChanged', a: a};
+};
+var $elm$core$Basics$EQ = {$: 'EQ'};
+var $elm$core$Basics$GT = {$: 'GT'};
+var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$List$cons = _List_cons;
 var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
@@ -4432,51 +4417,29 @@ var $elm$core$Set$toList = function (_v0) {
 	var dict = _v0.a;
 	return $elm$core$Dict$keys(dict);
 };
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$GT = {$: 'GT'};
-var $elm$core$Basics$LT = {$: 'LT'};
-var $author$project$Types$Main = {$: 'Main'};
-var $author$project$LoL$Types$AoE = {$: 'AoE'};
-var $author$project$LoL$Types$Target = {$: 'Target'};
-var $author$project$Init$katarina = {
-	abilities: {
-		e: {castTime: '0.035', cooldown: 14, damage: 15, name: 'Shunpo', range: 725, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_E1.webm'},
-		p: {castTime: 'None ', cooldown: 15, damage: 68, name: 'Voracity', range: 340, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_P1.webm'},
-		q: {castTime: '0.25', cooldown: 11, damage: 75, name: 'Bouncing Blade', range: 625, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_Q1.webm'},
-		r: {castTime: 'None', cooldown: 90, damage: 375, name: 'Death Lotus', range: 550, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_R1.webm'},
-		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/soCg5RbgYIA'},
-		w: {castTime: 'None', cooldown: 15, damage: 50, name: 'Preparation', range: 250, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_W1.webm'}
-	},
-	bio: 'Born to one of the most respected noble families of Noxus, Katarina Du Couteau found herself elevated above others from an early age. While her younger sister Cassiopeia took after their politically brilliant mother, Katarina was very much her father’s daughter, and the wily General Du Couteau pushed her to learn the way of the blade; to cut away the empire’s enemies not with reckless brutality, but deadly precision. He was a harsh teacher with many pupils, and notoriously difficult to impress. So it was that Katarina’s childhood—if it can be called such—had little room for kindness or rest. She spent every waking moment honing herself into the ultimate weapon, testing her endurance, her dexterity, her tolerance for pain. She stole poisons from the city’s least reputable apothecaries, testing their efficacy in tiny increments upon herself, gradually building her resistance even as she catalogued their effects. She scaled the tallest towers in the dead of night, unseen by anyone.',
-	firstName: 'Katarina',
-	fraction: 'Noxus',
-	lastName: 'Du Couteau',
-	photo: 'https://cdnportal.mobalytics.gg/production/2021/03/7027b46a-d8jhqfo-aed71994-3e18-46f8-984c-b68c1e356ce7.jpg'
-};
-var $author$project$Init$kindred = {
-	abilities: {
-		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
-		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
-		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
-		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
-		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/h0Pwn7G-eLE'},
-		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
-	},
-	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
-	firstName: 'Kindred',
-	fraction: 'Noxus',
-	lastName: ' ',
-	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
-};
-var $author$project$Init$init = {
-	countedValue: 0,
-	currAbility: $author$project$Init$katarina.abilities.spotlight,
-	currLegend: $author$project$Init$katarina,
-	inputValue: '',
-	legends: _List_fromArray(
-		[$author$project$Init$katarina, $author$project$Init$kindred]),
-	page: $author$project$Types$Main,
-	repeatValue: 1
+var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
+var $elm$core$Array$foldr = F3(
+	function (func, baseCase, _v0) {
+		var tree = _v0.c;
+		var tail = _v0.d;
+		var helper = F2(
+			function (node, acc) {
+				if (node.$ === 'SubTree') {
+					var subTree = node.a;
+					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
+				} else {
+					var values = node.a;
+					return A3($elm$core$Elm$JsArray$foldr, func, acc, values);
+				}
+			});
+		return A3(
+			$elm$core$Elm$JsArray$foldr,
+			helper,
+			A3($elm$core$Elm$JsArray$foldr, func, baseCase, tail),
+			tree);
+	});
+var $elm$core$Array$toList = function (array) {
+	return A3($elm$core$Array$foldr, $elm$core$List$cons, _List_Nil, array);
 };
 var $elm$core$Result$Err = function (a) {
 	return {$: 'Err', a: a};
@@ -5186,30 +5149,112 @@ var $elm$core$Task$perform = F2(
 			$elm$core$Task$Perform(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
+var $elm$browser$Browser$application = _Browser_application;
+var $author$project$Types$Main = {$: 'Main'};
+var $author$project$LoL$Types$AoE = {$: 'AoE'};
+var $author$project$LoL$Types$Target = {$: 'Target'};
+var $author$project$Init$katarina = {
+	abilities: {
+		e: {castTime: '0.035', cooldown: 14, damage: 15, name: 'Shunpo', range: 725, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_E1.webm'},
+		p: {castTime: 'None ', cooldown: 15, damage: 68, name: 'Voracity', range: 340, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_P1.webm'},
+		q: {castTime: '0.25', cooldown: 11, damage: 75, name: 'Bouncing Blade', range: 625, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_Q1.webm'},
+		r: {castTime: 'None', cooldown: 90, damage: 375, name: 'Death Lotus', range: 550, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_R1.webm'},
+		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/soCg5RbgYIA'},
+		w: {castTime: 'None', cooldown: 15, damage: 50, name: 'Preparation', range: 250, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_W1.webm'}
+	},
+	bio: 'Born to one of the most respected noble families of Noxus, Katarina Du Couteau found herself elevated above others from an early age. While her younger sister Cassiopeia took after their politically brilliant mother, Katarina was very much her father’s daughter, and the wily General Du Couteau pushed her to learn the way of the blade; to cut away the empire’s enemies not with reckless brutality, but deadly precision. He was a harsh teacher with many pupils, and notoriously difficult to impress. So it was that Katarina’s childhood—if it can be called such—had little room for kindness or rest. She spent every waking moment honing herself into the ultimate weapon, testing her endurance, her dexterity, her tolerance for pain. She stole poisons from the city’s least reputable apothecaries, testing their efficacy in tiny increments upon herself, gradually building her resistance even as she catalogued their effects. She scaled the tallest towers in the dead of night, unseen by anyone.',
+	firstName: 'Katarina',
+	fraction: 'Noxus',
+	lastName: 'Du Couteau',
+	photo: 'https://cdnportal.mobalytics.gg/production/2021/03/7027b46a-d8jhqfo-aed71994-3e18-46f8-984c-b68c1e356ce7.jpg'
+};
+var $author$project$Init$kindred = {
+	abilities: {
+		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
+		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
+		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
+		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
+		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/h0Pwn7G-eLE'},
+		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
+	},
+	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
+	firstName: 'Kindred',
+	fraction: 'Noxus',
+	lastName: ' ',
+	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
+};
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $author$project$Init$init = F3(
+	function (flags, url, key) {
+		return _Utils_Tuple2(
+			{
+				countedValue: 0,
+				currAbility: $author$project$Init$katarina.abilities.spotlight,
+				currLegend: $author$project$Init$katarina,
+				inputValue: '',
+				key: key,
+				legends: _List_fromArray(
+					[$author$project$Init$katarina, $author$project$Init$kindred]),
+				page: $author$project$Types$Main,
+				repeatValue: 1,
+				url: url
+			},
+			$elm$core$Platform$Cmd$none);
+	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
-var $elm$browser$Browser$sandbox = function (impl) {
-	return _Browser_element(
-		{
-			init: function (_v0) {
-				return _Utils_Tuple2(impl.init, $elm$core$Platform$Cmd$none);
-			},
-			subscriptions: function (_v1) {
-				return $elm$core$Platform$Sub$none;
-			},
-			update: F2(
-				function (msg, model) {
-					return _Utils_Tuple2(
-						A2(impl.update, msg, model),
-						$elm$core$Platform$Cmd$none);
-				}),
-			view: impl.view
-		});
+var $author$project$Init$subscriptions = function (_v0) {
+	return $elm$core$Platform$Sub$none;
 };
 var $author$project$Types$LegendPage = function (a) {
 	return {$: 'LegendPage', a: a};
+};
+var $elm$browser$Browser$Navigation$load = _Browser_load;
+var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
+var $elm$url$Url$addPort = F2(
+	function (maybePort, starter) {
+		if (maybePort.$ === 'Nothing') {
+			return starter;
+		} else {
+			var port_ = maybePort.a;
+			return starter + (':' + $elm$core$String$fromInt(port_));
+		}
+	});
+var $elm$url$Url$addPrefixed = F3(
+	function (prefix, maybeSegment, starter) {
+		if (maybeSegment.$ === 'Nothing') {
+			return starter;
+		} else {
+			var segment = maybeSegment.a;
+			return _Utils_ap(
+				starter,
+				_Utils_ap(prefix, segment));
+		}
+	});
+var $elm$url$Url$toString = function (url) {
+	var http = function () {
+		var _v0 = url.protocol;
+		if (_v0.$ === 'Http') {
+			return 'http://';
+		} else {
+			return 'https://';
+		}
+	}();
+	return A3(
+		$elm$url$Url$addPrefixed,
+		'#',
+		url.fragment,
+		A3(
+			$elm$url$Url$addPrefixed,
+			'?',
+			url.query,
+			_Utils_ap(
+				A2(
+					$elm$url$Url$addPort,
+					url.port_,
+					_Utils_ap(http, url.host)),
+				url.path)));
 };
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
@@ -5224,60 +5269,103 @@ var $author$project$Update$update = F2(
 	function (event, model) {
 		switch (event.$) {
 			case 'Increment':
-				return _Utils_update(
-					model,
-					{countedValue: model.countedValue + 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{countedValue: model.countedValue + 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'Decrement':
-				return _Utils_update(
-					model,
-					{countedValue: model.countedValue - 1});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{countedValue: model.countedValue - 1}),
+					$elm$core$Platform$Cmd$none);
 			case 'Reset':
-				return _Utils_update(
-					model,
-					{countedValue: 0});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{countedValue: 0}),
+					$elm$core$Platform$Cmd$none);
 			case 'Set':
 				var countedValue = event.a;
-				return _Utils_update(
-					model,
-					{countedValue: countedValue});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{countedValue: countedValue}),
+					$elm$core$Platform$Cmd$none);
 			case 'InputHandler':
 				var inputValue = event.a;
-				return _Utils_update(
-					model,
-					{inputValue: inputValue});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{inputValue: inputValue}),
+					$elm$core$Platform$Cmd$none);
 			case 'UpdateCounter':
-				return _Utils_update(
-					model,
-					{
-						countedValue: A2(
-							$elm$core$Maybe$withDefault,
-							model.countedValue,
-							$elm$core$String$toInt(model.inputValue))
-					});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							countedValue: A2(
+								$elm$core$Maybe$withDefault,
+								model.countedValue,
+								$elm$core$String$toInt(model.inputValue))
+						}),
+					$elm$core$Platform$Cmd$none);
 			case 'IncreaseMarginal':
-				return _Utils_update(
-					model,
-					{
-						repeatValue: (model.repeatValue < 10) ? (2 + model.repeatValue) : 10
-					});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							repeatValue: (model.repeatValue < 10) ? (2 + model.repeatValue) : 10
+						}),
+					$elm$core$Platform$Cmd$none);
 			case 'Select':
 				var legend = event.a;
-				return _Utils_update(
-					model,
-					{
-						currLegend: legend,
-						page: $author$project$Types$LegendPage(legend)
-					});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							currLegend: legend,
+							page: $author$project$Types$LegendPage(legend)
+						}),
+					$elm$core$Platform$Cmd$none);
 			case 'SetPageID':
 				var pageID = event.a;
-				return _Utils_update(
-					model,
-					{page: pageID});
-			default:
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{page: pageID}),
+					$elm$core$Platform$Cmd$none);
+			case 'ShowAbilityDesc':
 				var x = event.a;
-				return _Utils_update(
-					model,
-					{currAbility: x});
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{currAbility: x}),
+					$elm$core$Platform$Cmd$none);
+			case 'LinkClicked':
+				var urlRequest = event.a;
+				if (urlRequest.$ === 'Internal') {
+					var url = urlRequest.a;
+					return _Utils_Tuple2(
+						model,
+						A2(
+							$elm$browser$Browser$Navigation$pushUrl,
+							model.key,
+							$elm$url$Url$toString(url)));
+				} else {
+					var href = urlRequest.a;
+					return _Utils_Tuple2(
+						model,
+						$elm$browser$Browser$Navigation$load(href));
+				}
+			default:
+				var url = event.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{url: url}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Types$Decrement = {$: 'Decrement'};
@@ -5681,172 +5769,178 @@ var $author$project$LoL$LegendSelect$view = function (model) {
 		A2($elm$core$List$map, $author$project$LoL$LegendSelect$mkLegend, model.legends));
 };
 var $author$project$View$view = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
+	return {
+		body: _List_fromArray(
 			[
 				A2(
-				$elm$html$Html$header,
+				$elm$html$Html$div,
 				_List_Nil,
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$button,
+						$elm$html$Html$header,
+						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$LoL))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('LoL')
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Events$onClick(
+										$author$project$Types$SetPageID($author$project$Types$LoL))
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('LoL')
+									])),
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Events$onClick(
+										$author$project$Types$SetPageID($author$project$Types$Marginal))
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Marginal')
+									])),
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Events$onClick(
+										$author$project$Types$SetPageID($author$project$Types$Main))
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Main')
+									]))
 							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$Marginal))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Marginal')
-							])),
-						A2(
-						$elm$html$Html$button,
-						_List_fromArray(
-							[
-								$elm$html$Html$Events$onClick(
-								$author$project$Types$SetPageID($author$project$Types$Main))
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Main')
-							]))
-					])),
-				function () {
-				var _v0 = model.page;
-				switch (_v0.$) {
-					case 'Main':
-						return A2(
-							$elm$html$Html$div,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-									A2($elm$html$Html$Attributes$style, 'flex', 'row'),
-									A2($elm$html$Html$Attributes$style, 'height', '5%')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$button,
+						function () {
+						var _v0 = model.page;
+						switch (_v0.$) {
+							case 'Main':
+								return A2(
+									$elm$html$Html$div,
 									_List_fromArray(
 										[
-											$elm$html$Html$Events$onClick($author$project$Types$Decrement)
+											A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+											A2($elm$html$Html$Attributes$style, 'flex', 'row'),
+											A2($elm$html$Html$Attributes$style, 'height', '5%')
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text('-')
-										])),
-									A2(
+											A2(
+											$elm$html$Html$button,
+											_List_fromArray(
+												[
+													$elm$html$Html$Events$onClick($author$project$Types$Decrement)
+												]),
+											_List_fromArray(
+												[
+													$elm$html$Html$text('-')
+												])),
+											A2(
+											$elm$html$Html$div,
+											_List_Nil,
+											_List_fromArray(
+												[
+													$elm$html$Html$text(
+													$elm$core$String$fromInt(model.countedValue))
+												])),
+											A2(
+											$elm$html$Html$button,
+											_List_fromArray(
+												[
+													$elm$html$Html$Events$onClick($author$project$Types$Increment)
+												]),
+											_List_fromArray(
+												[
+													$elm$html$Html$text('+')
+												])),
+											A2(
+											$elm$html$Html$button,
+											_List_fromArray(
+												[
+													$elm$html$Html$Events$onClick($author$project$Types$Reset)
+												]),
+											_List_fromArray(
+												[
+													$elm$html$Html$text('reset')
+												])),
+											A2(
+											$elm$html$Html$button,
+											_List_fromArray(
+												[
+													$elm$html$Html$Events$onClick(
+													$author$project$Types$Set(15))
+												]),
+											_List_fromArray(
+												[
+													$elm$html$Html$text('set to 15')
+												])),
+											A2(
+											$elm$html$Html$input,
+											_List_fromArray(
+												[
+													$elm$html$Html$Attributes$placeholder('Write a number'),
+													$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
+												]),
+											_List_Nil),
+											A2(
+											$elm$html$Html$button,
+											_List_fromArray(
+												[
+													$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
+												]),
+											_List_fromArray(
+												[
+													$elm$html$Html$text('press')
+												]))
+										]));
+							case 'Marginal':
+								return A2(
 									$elm$html$Html$div,
 									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text(
-											$elm$core$String$fromInt(model.countedValue))
-										])),
-									A2(
-									$elm$html$Html$button,
+											A2(
+											$elm$html$Html$button,
+											_List_fromArray(
+												[
+													$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
+												]),
+											_List_fromArray(
+												[
+													$elm$html$Html$text('increase marginal')
+												])),
+											$author$project$MarginalSquare$mkMarginals(model)
+										]));
+							case 'LoL':
+								return A2(
+									$elm$html$Html$div,
+									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$Events$onClick($author$project$Types$Increment)
-										]),
+											$author$project$LoL$LegendSelect$view(model)
+										]));
+							default:
+								var legend = _v0.a;
+								return A2(
+									$elm$html$Html$div,
+									_List_Nil,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('+')
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$Reset)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('reset')
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick(
-											$author$project$Types$Set(15))
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('set to 15')
-										])),
-									A2(
-									$elm$html$Html$input,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$placeholder('Write a number'),
-											$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
-										]),
-									_List_Nil),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('press')
-										]))
-								]));
-					case 'Marginal':
-						return A2(
-							$elm$html$Html$div,
-							_List_Nil,
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('increase marginal')
-										])),
-									$author$project$MarginalSquare$mkMarginals(model)
-								]));
-					case 'LoL':
-						return A2(
-							$elm$html$Html$div,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$author$project$LoL$LegendSelect$view(model)
-								]));
-					default:
-						var legend = _v0.a;
-						return A2(
-							$elm$html$Html$div,
-							_List_Nil,
-							_List_fromArray(
-								[
-									A2($author$project$LoL$LegendPage$view, model, legend)
-								]));
-				}
-			}()
-			]));
+											A2($author$project$LoL$LegendPage$view, model, legend)
+										]));
+						}
+					}()
+					]))
+			]),
+		title: 'URL Interceptor'
+	};
 };
-var $author$project$Main$main = $elm$browser$Browser$sandbox(
-	{init: $author$project$Init$init, update: $author$project$Update$update, view: $author$project$View$view});
+var $author$project$Main$main = $elm$browser$Browser$application(
+	{init: $author$project$Init$init, onUrlChange: $author$project$Types$UrlChanged, onUrlRequest: $author$project$Types$LinkClicked, subscriptions: $author$project$Init$subscriptions, update: $author$project$Update$update, view: $author$project$View$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));

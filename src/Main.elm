@@ -4,9 +4,16 @@ module Main exposing (..)
 import Browser
 import Types exposing (..)
 import Update exposing (update)
-import Init exposing (init)
+import Init exposing (..)
 import View exposing (view)
 
 main : Program () Model Event
 main =
-    Browser.sandbox { init = init, update = update, view = view }
+    Browser.application 
+        { init = init
+        , update = update
+        , view = view 
+        , subscriptions = subscriptions
+        , onUrlChange = UrlChanged
+        , onUrlRequest = LinkClicked
+        }

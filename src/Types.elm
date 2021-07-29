@@ -2,6 +2,9 @@ module Types exposing (..)
 
 
 import LoL.Types exposing (..)
+import Browser exposing (..)
+import Browser.Navigation as Nav
+import Url exposing (..)
 
 type Event 
     = Increment 
@@ -14,6 +17,8 @@ type Event
     | Select Legend
     | SetPageID PageID
     | ShowAbilityDesc Ability
+    | LinkClicked Browser.UrlRequest
+    | UrlChanged  Url
     
 type alias Model = 
     { countedValue : Int
@@ -23,6 +28,8 @@ type alias Model =
     , legends : List Legend
     , currAbility : Ability
     , currLegend : Legend
+    , key : Nav.Key
+    , url : Url
     }
 
 type PageID 
@@ -30,4 +37,4 @@ type PageID
     | Marginal 
     | LoL
     | LegendPage Legend
-    
+
