@@ -2,7 +2,6 @@ module Route exposing (..)
 
 
 import Types exposing (PageID(..))
-import LoL.Types exposing (Legend)
 import Url.Parser as Parser exposing (..)
 import Types exposing(..)
 

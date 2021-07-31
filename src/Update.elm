@@ -34,7 +34,7 @@ update event model =
             ({ model |  repeatValue = if model.repeatValue < 10 then 2 + model.repeatValue else 10 }, Cmd.none)
 
         Select legend -> 
-            ({ model | page = LegendPage legend , currLegend = legend }, Cmd.none)
+            ({ model | currLegend = legend }, Cmd.none)
 
         SetPageID pageID -> 
             ({ model | page = pageID }, Cmd.none)
@@ -51,8 +51,8 @@ update event model =
                   ( model, Nav.load href )
 
         UrlChanged url ->
-          ( { model | url = url }
-          , Cmd.none
-          )
+            ( { model | url = url }
+            , Cmd.none
+            )
 
 

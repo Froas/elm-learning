@@ -11,19 +11,22 @@ import Html.Events exposing (onClick)
 
 mkLegend : Legend -> Html Event
 mkLegend legend =
-    div 
-        [ style "background-color" "seagreen"
-        , style "height" "100px"
-        , style "width" "100px"
-        , style "margin" "10px"
-        , style "color" "white"
-        , style "font-size" "10px"
-        , style "display" "flex"
-        , style "align-items" "center"
-        , style "justify-content" "center"
-        , onClick <| Select legend 
+    a   
+        [ href <| "http://localhost:8000/lol/legend/" ++ String.toLower legend.firstName  ]
+        [div 
+            [ style "background-color" "seagreen"
+            , style "height" "100px"
+            , style "width" "100px"
+            , style "margin" "10px"
+            , style "color" "white"
+            , style "font-size" "10px"
+            , style "display" "flex"
+            , style "align-items" "center"
+            , style "justify-content" "center"
+            , onClick <| Select legend 
+            ]
+            [ text <| String.join " " [ legend.firstName, legend.lastName ] ]
         ]
-        [ text <| String.join " " [ legend.firstName, legend.lastName ] ] 
     
         
 view : Model -> Html Event

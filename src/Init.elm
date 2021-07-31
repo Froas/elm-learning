@@ -12,7 +12,7 @@ init flags url key =
     , repeatValue = 1
     , page = Main
     , legends = 
-        [ katarina, kindred ] 
+        [ katarina, kindred, yuumi ] 
     , currLegend = katarina
     , currAbility = katarina.abilities.spotlight
     , key = key
@@ -60,3 +60,22 @@ kindred =
 subscriptions : Model -> Sub Event
 subscriptions _ =
   Sub.none
+
+
+yuumi : Legend
+yuumi = 
+    { firstName = "Yuumi"
+    , lastName = " "
+    , fraction = "Noxus"
+    , bio = "Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. "
+    , photo = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg" 
+    , abilities = 
+        { p = { cooldown = 1, damage = 1, range = 1, useType = Target, name = "Mark of the Kindred", castTime = "None ", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm" }
+        , q = { cooldown = 1, damage = 1, range = 1, useType = Target, name = "Dance of Arrows", castTime = "0.25", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm" }
+        , w = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Wolf's Frenzy", castTime = "None", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm" }
+        , e = { cooldown = 1, damage = 1, range = 1, useType = Target, name = "Mounting Dread", castTime = "0.035", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm" }
+        , r = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Lamb's Respite", castTime = "None", video = "https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm" }
+        , spotlight = { cooldown = 1, damage = 1, range = 1, useType = AoE, name = "Lamb's Respite", castTime = "None", video = "https://www.youtube.com/embed/h0Pwn7G-eLE" }
+ 
+        }
+    }
