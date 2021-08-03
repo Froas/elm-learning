@@ -10774,10 +10774,6 @@ var $author$project$Types$SetPageID = function (a) {
 	return {$: 'SetPageID', a: a};
 };
 var $author$project$Types$UpdateCounter = {$: 'UpdateCounter'};
-var $elm$core$String$concat = function (strings) {
-	return A2($elm$core$String$join, '', strings);
-};
-var $elm$core$String$endsWith = _String_endsWith;
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
 		return A3(
@@ -10824,7 +10820,7 @@ var $author$project$MarginalSquare$mkMarginals = function (model) {
 			A2($elm$core$List$range, 1, model.repeatValue)));
 };
 var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
-var $elm$core$String$toLower = _String_toLower;
+var $elm$core$String$toUpper = _String_toUpper;
 var $author$project$Types$ShowAbilityDesc = function (a) {
 	return {$: 'ShowAbilityDesc', a: a};
 };
@@ -10888,184 +10884,177 @@ var $author$project$LoL$LoLUpdate$mkDescription = function (model) {
 					]))
 			]));
 };
-var $author$project$LoL$LegendPage$mkLegendPage = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('main-container')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('first-container')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$img,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('legend-img'),
-								$elm$html$Html$Attributes$src(model.currLegend.photo)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('name')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$p,
-								_List_fromArray(
-									[
-										A2($elm$html$Html$Attributes$style, 'margin-bottom', '30%')
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.firstName)
-									])),
-								A2(
-								$elm$html$Html$p,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.lastName)
-									]))
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('fraction')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(model.currLegend.fraction)
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('scrollable-textbox')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text(model.currLegend.bio)
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('second-container')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('skill-menu')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('skill-menu-item'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$ShowAbilityDesc(model.currLegend.abilities.spotlight))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Spotlight')
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('skill-menu-item'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$ShowAbilityDesc(model.currLegend.abilities.p))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.abilities.p.name)
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('skill-menu-item'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$ShowAbilityDesc(model.currLegend.abilities.q))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.abilities.q.name)
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('skill-menu-item'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$ShowAbilityDesc(model.currLegend.abilities.w))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.abilities.w.name)
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('skill-menu-item'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$ShowAbilityDesc(model.currLegend.abilities.e))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.abilities.e.name)
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('skill-menu-item'),
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$ShowAbilityDesc(model.currLegend.abilities.r))
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.currLegend.abilities.r.name)
-									]))
-							])),
-						$author$project$LoL$LoLUpdate$mkDescription(model),
-						$author$project$LoL$LoLUpdate$mkAbilityVideo(model)
-					]))
-			]));
-};
-var $author$project$LoL$LegendPage$view = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$author$project$LoL$LegendPage$mkLegendPage(model)
-			]));
-};
+var $author$project$LoL$LegendPage$view = F2(
+	function (model, legend) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('main-container')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('first-container')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$img,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('legend-img'),
+									$elm$html$Html$Attributes$src(legend.photo)
+								]),
+							_List_Nil),
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('name')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$p,
+									_List_fromArray(
+										[
+											A2($elm$html$Html$Attributes$style, 'margin-bottom', '30%')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.firstName)
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.lastName)
+										]))
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('fraction')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(legend.fraction)
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('scrollable-textbox')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(legend.bio)
+								]))
+						])),
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('second-container')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('skill-menu')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.spotlight))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Spotlight')
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.p))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.p.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.q))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.q.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.w))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.w.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.e))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.e.name)
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('skill-menu-item'),
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$ShowAbilityDesc(legend.abilities.r))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(legend.abilities.r.name)
+										]))
+								])),
+							$author$project$LoL$LoLUpdate$mkDescription(model),
+							$author$project$LoL$LoLUpdate$mkAbilityVideo(model)
+						]))
+				]));
+	});
 var $author$project$Types$Select = function (a) {
 	return {$: 'Select', a: a};
 };
+var $elm$core$String$toLower = _String_toLower;
 var $author$project$LoL$LegendSelect$mkLegend = function (legend) {
 	return A2(
 		$elm$html$Html$a,
@@ -11120,214 +11109,206 @@ var $author$project$View$view = function (model) {
 		body: _List_fromArray(
 			[
 				A2(
-				$elm$html$Html$div,
-				_List_Nil,
+				$elm$html$Html$header,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('header')
+					]),
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$header,
-						_List_Nil,
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$href('http://localhost:8000/lol')
+							]),
 						_List_fromArray(
 							[
 								A2(
-								$elm$html$Html$a,
+								$elm$html$Html$button,
 								_List_fromArray(
 									[
-										$elm$html$Html$Attributes$href('http://localhost:8000/lol')
+										$elm$html$Html$Events$onClick(
+										$author$project$Types$SetPageID($author$project$Types$LoL))
 									]),
 								_List_fromArray(
 									[
-										A2(
-										$elm$html$Html$button,
-										_List_fromArray(
-											[
-												$elm$html$Html$Events$onClick(
-												$author$project$Types$SetPageID($author$project$Types$LoL))
-											]),
-										_List_fromArray(
-											[
-												$elm$html$Html$text('LoL')
-											]))
-									])),
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href('http://localhost:8000/marginal')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$button,
-										_List_fromArray(
-											[
-												$elm$html$Html$Events$onClick(
-												$author$project$Types$SetPageID($author$project$Types$Marginal))
-											]),
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Marginal')
-											]))
-									])),
-								A2(
-								$elm$html$Html$a,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$href('http://localhost:8000/main')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$button,
-										_List_Nil,
-										_List_fromArray(
-											[
-												$elm$html$Html$text('Main')
-											]))
+										$elm$html$Html$text('LoL')
 									]))
 							])),
-						function () {
-						var _v0 = model.url.path;
-						switch (_v0) {
-							case '/main':
-								return A2(
-									$elm$html$Html$div,
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$href('http://localhost:8000/marginal')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$button,
+								_List_fromArray(
+									[
+										$elm$html$Html$Events$onClick(
+										$author$project$Types$SetPageID($author$project$Types$Marginal))
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Marginal')
+									]))
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$href('http://localhost:8000/main')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$button,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Main')
+									]))
+							]))
+					])),
+				function () {
+				var _v0 = model.url.path;
+				switch (_v0) {
+					case '/main':
+						return A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+									A2($elm$html$Html$Attributes$style, 'flex', 'row'),
+									A2($elm$html$Html$Attributes$style, 'height', '5%')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$button,
 									_List_fromArray(
 										[
-											A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-											A2($elm$html$Html$Attributes$style, 'flex', 'row'),
-											A2($elm$html$Html$Attributes$style, 'height', '5%'),
-											$elm$html$Html$Attributes$href('/main')
+											$elm$html$Html$Events$onClick($author$project$Types$Decrement)
 										]),
 									_List_fromArray(
 										[
-											A2(
-											$elm$html$Html$button,
-											_List_fromArray(
-												[
-													$elm$html$Html$Events$onClick($author$project$Types$Decrement)
-												]),
-											_List_fromArray(
-												[
-													$elm$html$Html$text('-')
-												])),
-											A2(
-											$elm$html$Html$div,
-											_List_Nil,
-											_List_fromArray(
-												[
-													$elm$html$Html$text(
-													$elm$core$String$fromInt(model.countedValue))
-												])),
-											A2(
-											$elm$html$Html$button,
-											_List_fromArray(
-												[
-													$elm$html$Html$Events$onClick($author$project$Types$Increment)
-												]),
-											_List_fromArray(
-												[
-													$elm$html$Html$text('+')
-												])),
-											A2(
-											$elm$html$Html$button,
-											_List_fromArray(
-												[
-													$elm$html$Html$Events$onClick($author$project$Types$Reset)
-												]),
-											_List_fromArray(
-												[
-													$elm$html$Html$text('reset')
-												])),
-											A2(
-											$elm$html$Html$button,
-											_List_fromArray(
-												[
-													$elm$html$Html$Events$onClick(
-													$author$project$Types$Set(15))
-												]),
-											_List_fromArray(
-												[
-													$elm$html$Html$text('set to 15')
-												])),
-											A2(
-											$elm$html$Html$input,
-											_List_fromArray(
-												[
-													$elm$html$Html$Attributes$placeholder('Write a number'),
-													$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
-												]),
-											_List_Nil),
-											A2(
-											$elm$html$Html$button,
-											_List_fromArray(
-												[
-													$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
-												]),
-											_List_fromArray(
-												[
-													$elm$html$Html$text('press')
-												]))
-										]));
-							case '/marginal':
-								return A2(
+											$elm$html$Html$text('-')
+										])),
+									A2(
 									$elm$html$Html$div,
 									_List_Nil,
 									_List_fromArray(
 										[
-											A2(
-											$elm$html$Html$button,
-											_List_fromArray(
-												[
-													$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
-												]),
-											_List_fromArray(
-												[
-													$elm$html$Html$text('increase marginal')
-												])),
-											$author$project$MarginalSquare$mkMarginals(model)
-										]));
-							case '/lol':
-								return A2(
-									$elm$html$Html$div,
-									_List_Nil,
+											$elm$html$Html$text(
+											$elm$core$String$fromInt(model.countedValue))
+										])),
+									A2(
+									$elm$html$Html$button,
 									_List_fromArray(
 										[
-											$author$project$LoL$LegendSelect$view(model)
-										]));
-							default:
-								var xs = _v0;
-								return _Utils_eq(
-									xs,
-									'/lol/legend/' + $elm$core$String$concat(
-										A2(
-											$elm$core$List$filter,
-											function (n) {
-												return A2($elm$core$String$endsWith, n, xs);
-											},
-											A2(
-												$elm$core$List$map,
-												function (x) {
-													return $elm$core$String$toLower(x.firstName);
-												},
-												model.legends)))) ? A2(
-									$elm$html$Html$div,
-									_List_Nil,
+											$elm$html$Html$Events$onClick($author$project$Types$Increment)
+										]),
 									_List_fromArray(
 										[
-											$author$project$LoL$LegendPage$view(model)
-										])) : A2(
-									$elm$html$Html$div,
-									_List_Nil,
+											$elm$html$Html$text('+')
+										])),
+									A2(
+									$elm$html$Html$button,
 									_List_fromArray(
 										[
-											$elm$html$Html$text('legend has not founded')
-										]));
+											$elm$html$Html$Events$onClick($author$project$Types$Reset)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('reset')
+										])),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick(
+											$author$project$Types$Set(15))
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('set to 15')
+										])),
+									A2(
+									$elm$html$Html$input,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$placeholder('Write a number'),
+											$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
+										]),
+									_List_Nil),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('press')
+										]))
+								]));
+					case '/marginal':
+						return A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('increase marginal')
+										])),
+									$author$project$MarginalSquare$mkMarginals(model)
+								]));
+					case '/lol':
+						return A2(
+							$elm$html$Html$div,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$author$project$LoL$LegendSelect$view(model)
+								]));
+					default:
+						var path = _v0;
+						var legendName = A2($elm$core$String$dropLeft, 12, path);
+						var legendNameCapitalized = _Utils_ap(
+							$elm$core$String$toUpper(
+								A2($elm$core$String$left, 1, legendName)),
+							A2($elm$core$String$dropLeft, 1, legendName));
+						var initPath = A2($elm$core$String$left, 12, path);
+						var filteredLegends = A2(
+							$elm$core$List$filter,
+							function (legend) {
+								return _Utils_eq(legendNameCapitalized, legend.firstName);
+							},
+							model.legends);
+						if (initPath === '/lol/legend/') {
+							if (filteredLegends.b && (!filteredLegends.b.b)) {
+								var legend = filteredLegends.a;
+								return A2($author$project$LoL$LegendPage$view, model, legend);
+							} else {
+								return A2($elm$html$Html$div, _List_Nil, _List_Nil);
+							}
+						} else {
+							return $elm$html$Html$text('404');
 						}
-					}()
-					]))
+				}
+			}()
 			]),
-		title: 'URL Interceptor'
+		title: 'My project'
 	};
 };
 var $author$project$Main$main = $elm$browser$Browser$application(

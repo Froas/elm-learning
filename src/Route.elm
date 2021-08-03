@@ -17,9 +17,9 @@ type Route
 routeParser : Parser (Route -> a) a
 routeParser =
   oneOf
-    [ Parser.map Home Parser.top
-    , Parser.map Marginal    (s "Marginal")
-    , Parser.map LoL    (s "LoL" )
-    , Parser.map LegendPage (s "LegendPage" </> string)
+    [ map Home Parser.top
+    , map Marginal    (s "Marginal")
+    , map LoL    (s "LoL" )
+    , map LegendPage (s "LegendPage" </> string)
     ]
     

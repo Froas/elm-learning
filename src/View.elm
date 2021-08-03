@@ -11,8 +11,9 @@ import LoL.LegendSelect
 import Html exposing (header)
 import Browser
 import LoL.LegendPage
-import Url
-import Maybe exposing (withDefault)
+
+import Html exposing (legend)
+
 
 
 
@@ -22,27 +23,25 @@ import Maybe exposing (withDefault)
 
 view : Model -> Browser.Document Event
 view model =
-    { title = "URL Interceptor"
-    , body =
-        [ div 
-            [] 
-            [ header 
-                [] 
+    { title = "My project"
+    , body = 
+        [ header 
 
-                [ a [ href "http://localhost:8000/lol" ]
-                    [ button [ onClick <| SetPageID LoL ] [ text "LoL" ] ]
-                , a [ href "http://localhost:8000/marginal" ]
-                    [ button [ onClick <| SetPageID Marginal ] [ text "Marginal" ] ]
-                , a [ href "http://localhost:8000/main" ] 
-                    [ button [] [ text "Main"] ]
-                ]
+            [ class "header"]
+
+            [ a [ href "http://localhost:8000/lol" ]
+                [ button [ onClick <| SetPageID LoL ] [ text "LoL" ] ]
+            , a [ href "http://localhost:8000/marginal" ]
+                [ button [ onClick <| SetPageID Marginal ] [ text "Marginal" ] ]
+            , a [ href "http://localhost:8000/main" ] 
+                [ button [] [ text "Main"] ]
+            ]
 
             , case model.url.path of
                 "/main" ->
                     div [ style "display" "flex" 
                         , style "flex" "row"
-                        , style "height" "5%"
-                        , href "/main" 
+                        , style "height" "5%" 
                         ]  
 
                         [ button [ onClick Decrement ] [ text "-" ]
@@ -65,19 +64,39 @@ view model =
                 "/lol" ->
                     div [] [ LoL.LegendSelect.view model ]
 
-                xs -> 
-                    if xs == "/lol/legend/" ++  ( String.concat <| List.filter(\n -> String.endsWith n xs ) 
-                                            <| List.map (\x -> String.toLower x.firstName ) model.legends )
-                        then div [] [ LoL.LegendPage.view model ]
-                        else div [] [ text "legend has not founded" ]            
+                path ->  
+                    let 
+                        initPath = String.left 12 path
+                        legendName = String.dropLeft 12 path 
+                        legendNameCapitalized = String.toUpper (String.left 1 legendName)  ++  String.dropLeft 1 legendName
+                        filteredLegends = List.filter (\legend -> legendNameCapitalized == legend.firstName) model.legends 
 
-                    
-                -- _ ->
-                --     div [] [ text "404" ]
+                    in
+                        if initPath == "/lol/legend/"
+
+                        then    
+                            case filteredLegends of 
+                                [legend] -> LoL.LegendPage.view model legend 
+
+                                _        -> div [] []
+                        else text "404"
             ]
-        ]
     }
 
-    -- 
-    -- List.concat <| List.filter(\n -> xs == "/lol/legend/"  ++ n ) <| List.map (\x -> x.firstName ) model.legends
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    -- List.all (\a -> a == xs ) ( List.filter(\n -> xs ==  n ) <| List.map (\x -> "/lol/legend/" ++ x.firstName ) model.legends )
+    --  0 > ( List.length <| List.filter (\x -> String.toLower x.firstName == String.dropLeft 12 xs ) model.legends )
+    -- List.member (String.left 12 xs)  <| List.map (\x -> String.toLower x.firstName ) model.legends
+    -- LoL.LegendSelect.view model,  if List.all (\a -> a == xs ) ( List.filter(\n -> xs ==  n ) <| List.map (\x -> "/lol/legend/" ++ x.firstName ) model.legends )
+    -- List.concat <| List.filter(\n -> xs ==  n ) <| List.map (\x -> "/lol/legend/" + x.firstName ) model.legends
     -- onClick <| UrlChanged <| withDefault model.url <| Url.fromString <| "http://localhost:8000" ++ xs
+    -- List.all (\a -> String.endsWith  a  xs ) ( List.filter(\n -> xs ==  n ) <| List.map (\x -> "/lol/legend/" ++ x.firstName ) model.legends )

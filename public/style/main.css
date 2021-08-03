@@ -3,7 +3,7 @@ html, body, html * {
   font-family: 'Roboto', sans-serif;
 }
 
-html, body, body > div, body > div > div {
+html, body, body > header, body > header > div, body > header > div > div {
   margin: 0;
   height: 100%;
 }
@@ -98,6 +98,11 @@ p {
 }
 
 .spotlight-video {
-  flex: 5;
+  flex: 5; 
+  object-fit: fill;
 }
 
+.header {
+  flex: 1;
+  max-height: 5%;
+}
