@@ -1,8 +1,8 @@
 module LoL.LegendSelect exposing (..)
 
 
-import Html exposing (..) 
-import Html.Attributes exposing (..)
+import Html exposing (div,a, Html, text) 
+import Html.Attributes exposing (class, href, style)
 import Types exposing (..)
 import LoL.Types exposing (Legend)
 import Html.Events exposing (onClick)
@@ -13,16 +13,8 @@ mkLegend : Legend -> Html Event
 mkLegend legend =
     a   
         [ href <| "http://localhost:8000/lol/legend/" ++ String.toLower legend.firstName  ]
-        [div 
-            [ style "background-color" "seagreen"
-            , style "height" "100px"
-            , style "width" "100px"
-            , style "margin" "10px"
-            , style "color" "white"
-            , style "font-size" "10px"
-            , style "display" "flex"
-            , style "align-items" "center"
-            , style "justify-content" "center"
+        [ div 
+            [ class "legend"
             , onClick <| Select legend 
             ]
             [ text <| String.join " " [ legend.firstName, legend.lastName ] ]

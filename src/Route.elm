@@ -1,12 +1,9 @@
 module Route exposing (..)
 
 
-import Types exposing (PageID(..))
+import Types exposing (..)
 import Url.Parser as Parser exposing (..)
 import Types exposing(..)
-
-
-
 
 type Route 
     = Home

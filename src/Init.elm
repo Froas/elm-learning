@@ -1,16 +1,18 @@
 module Init exposing (..)
 
-import Browser.Navigation as Nav
+
 import Url exposing (..)
 import Types exposing (..)
 import LoL.Types exposing (..)
+import Browser.Navigation as Nav
+
 
 init : () -> Url -> Nav.Key -> ( Model, Cmd Event )
 init flags url key = 
-    ({ countedValue = 0
+    (
+    { countedValue = 0
     , inputValue = ""
     , repeatValue = 1
-    , page = Main
     , legends = 
         [ katarina, kindred, yuumi ] 
     , currLegend = katarina
@@ -57,11 +59,6 @@ kindred =
         }
     }
 
-subscriptions : Model -> Sub Event
-subscriptions _ =
-  Sub.none
-
-
 yuumi : Legend
 yuumi = 
     { firstName = "Yuumi"
@@ -79,3 +76,7 @@ yuumi =
  
         }
     }
+
+subscriptions : Model -> Sub Event
+subscriptions _ =
+  Sub.none

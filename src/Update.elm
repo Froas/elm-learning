@@ -1,13 +1,11 @@
 module Update exposing (..)
 
 
-import Maybe exposing (withDefault)
-import Types exposing (..)
-import LoL.Types exposing (..)
-import Html exposing (legend)
+import Url
 import Browser
 import Browser.Navigation as Nav
-import Url
+import Types exposing (..)
+import Maybe exposing (withDefault)
 
 update : Event -> Model -> ( Model, Cmd Event)
 update event model =
@@ -34,10 +32,7 @@ update event model =
             ({ model |  repeatValue = if model.repeatValue < 10 then 2 + model.repeatValue else 10 }, Cmd.none)
 
         Select legend -> 
-            ({ model | currLegend = legend }, Cmd.none)
-
-        SetPageID pageID -> 
-            ({ model | page = pageID }, Cmd.none)
+            ({ model | currLegend = legend, currAbility = legend.abilities.spotlight }, Cmd.none)
 
         ShowAbilityDesc x ->
             ({ model | currAbility = x }, Cmd.none)

@@ -1,8 +1,6 @@
 module LoL.Types exposing (..)
 
 
-
-
 type UseType 
     = Target
     | AoE
@@ -26,7 +24,6 @@ type alias Abilities =
     , r : Ability
     , spotlight : Ability
     }
-
 
 type alias Legend =
     { firstName : String

@@ -10542,7 +10542,6 @@ var $elm$core$Basics$never = function (_v0) {
 	}
 };
 var $elm$browser$Browser$application = _Browser_application;
-var $author$project$Types$Main = {$: 'Main'};
 var $author$project$LoL$Types$AoE = {$: 'AoE'};
 var $author$project$LoL$Types$Target = {$: 'Target'};
 var $author$project$Init$katarina = {
@@ -10601,7 +10600,6 @@ var $author$project$Init$init = F3(
 				key: key,
 				legends: _List_fromArray(
 					[$author$project$Init$katarina, $author$project$Init$kindred, $author$project$Init$yuumi]),
-				page: $author$project$Types$Main,
 				repeatValue: 1,
 				url: url
 			},
@@ -10717,14 +10715,7 @@ var $author$project$Update$update = F2(
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{currLegend: legend}),
-					$elm$core$Platform$Cmd$none);
-			case 'SetPageID':
-				var pageID = event.a;
-				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{page: pageID}),
+						{currAbility: legend.abilities.spotlight, currLegend: legend}),
 					$elm$core$Platform$Cmd$none);
 			case 'ShowAbilityDesc':
 				var x = event.a;
@@ -10758,22 +10749,7 @@ var $author$project$Update$update = F2(
 					$elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Types$Decrement = {$: 'Decrement'};
 var $author$project$Types$IncreaseMarginal = {$: 'IncreaseMarginal'};
-var $author$project$Types$Increment = {$: 'Increment'};
-var $author$project$Types$InputHandler = function (a) {
-	return {$: 'InputHandler', a: a};
-};
-var $author$project$Types$LoL = {$: 'LoL'};
-var $author$project$Types$Marginal = {$: 'Marginal'};
-var $author$project$Types$Reset = {$: 'Reset'};
-var $author$project$Types$Set = function (a) {
-	return {$: 'Set', a: a};
-};
-var $author$project$Types$SetPageID = function (a) {
-	return {$: 'SetPageID', a: a};
-};
-var $author$project$Types$UpdateCounter = {$: 'UpdateCounter'};
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
 		return A3(
@@ -10792,15 +10768,7 @@ var $author$project$MarginalSquare$view = function (margoId) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'background-color', 'black'),
-				A2($elm$html$Html$Attributes$style, 'height', '100px'),
-				A2($elm$html$Html$Attributes$style, 'width', '100px'),
-				A2($elm$html$Html$Attributes$style, 'margin', '10px'),
-				A2($elm$html$Html$Attributes$style, 'color', 'white'),
-				A2($elm$html$Html$Attributes$style, 'font-size', '40px'),
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
-				A2($elm$html$Html$Attributes$style, 'justify-content', 'center')
+				$elm$html$Html$Attributes$class('margo')
 			]),
 		_List_fromArray(
 			[
@@ -10819,8 +10787,98 @@ var $author$project$MarginalSquare$mkMarginals = function (model) {
 			},
 			A2($elm$core$List$range, 1, model.repeatValue)));
 };
-var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
 var $elm$core$String$toUpper = _String_toUpper;
+var $author$project$Types$Decrement = {$: 'Decrement'};
+var $author$project$Types$Increment = {$: 'Increment'};
+var $author$project$Types$InputHandler = function (a) {
+	return {$: 'InputHandler', a: a};
+};
+var $author$project$Types$Reset = {$: 'Reset'};
+var $author$project$Types$Set = function (a) {
+	return {$: 'Set', a: a};
+};
+var $author$project$Types$UpdateCounter = {$: 'UpdateCounter'};
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $author$project$Counting$view = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+				A2($elm$html$Html$Attributes$style, 'flex', 'row'),
+				A2($elm$html$Html$Attributes$style, 'height', '5%')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$Decrement)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('-')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text(
+						$elm$core$String$fromInt(model.countedValue))
+					])),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$Increment)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('+')
+					])),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$Reset)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('reset')
+					])),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick(
+						$author$project$Types$Set(15))
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('set to 15')
+					])),
+				A2(
+				$elm$html$Html$input,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$placeholder('Write a number'),
+						$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
+					]),
+				_List_Nil),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('press')
+					]))
+			]));
+};
 var $author$project$Types$ShowAbilityDesc = function (a) {
 	return {$: 'ShowAbilityDesc', a: a};
 };
@@ -10886,6 +10944,7 @@ var $author$project$LoL$LoLUpdate$mkDescription = function (model) {
 };
 var $author$project$LoL$LegendPage$view = F2(
 	function (model, legend) {
+		var legendAbility = legend.abilities;
 		return A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -10979,7 +11038,7 @@ var $author$project$LoL$LegendPage$view = F2(
 										[
 											$elm$html$Html$Attributes$class('skill-menu-item'),
 											$elm$html$Html$Events$onClick(
-											$author$project$Types$ShowAbilityDesc(legend.abilities.spotlight))
+											$author$project$Types$ShowAbilityDesc(legendAbility.spotlight))
 										]),
 									_List_fromArray(
 										[
@@ -10991,11 +11050,11 @@ var $author$project$LoL$LegendPage$view = F2(
 										[
 											$elm$html$Html$Attributes$class('skill-menu-item'),
 											$elm$html$Html$Events$onClick(
-											$author$project$Types$ShowAbilityDesc(legend.abilities.p))
+											$author$project$Types$ShowAbilityDesc(legendAbility.p))
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text(legend.abilities.p.name)
+											$elm$html$Html$text(legendAbility.p.name)
 										])),
 									A2(
 									$elm$html$Html$div,
@@ -11003,11 +11062,11 @@ var $author$project$LoL$LegendPage$view = F2(
 										[
 											$elm$html$Html$Attributes$class('skill-menu-item'),
 											$elm$html$Html$Events$onClick(
-											$author$project$Types$ShowAbilityDesc(legend.abilities.q))
+											$author$project$Types$ShowAbilityDesc(legendAbility.q))
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text(legend.abilities.q.name)
+											$elm$html$Html$text(legendAbility.q.name)
 										])),
 									A2(
 									$elm$html$Html$div,
@@ -11015,11 +11074,11 @@ var $author$project$LoL$LegendPage$view = F2(
 										[
 											$elm$html$Html$Attributes$class('skill-menu-item'),
 											$elm$html$Html$Events$onClick(
-											$author$project$Types$ShowAbilityDesc(legend.abilities.w))
+											$author$project$Types$ShowAbilityDesc(legendAbility.w))
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text(legend.abilities.w.name)
+											$elm$html$Html$text(legendAbility.w.name)
 										])),
 									A2(
 									$elm$html$Html$div,
@@ -11027,11 +11086,11 @@ var $author$project$LoL$LegendPage$view = F2(
 										[
 											$elm$html$Html$Attributes$class('skill-menu-item'),
 											$elm$html$Html$Events$onClick(
-											$author$project$Types$ShowAbilityDesc(legend.abilities.e))
+											$author$project$Types$ShowAbilityDesc(legendAbility.e))
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text(legend.abilities.e.name)
+											$elm$html$Html$text(legendAbility.e.name)
 										])),
 									A2(
 									$elm$html$Html$div,
@@ -11039,11 +11098,11 @@ var $author$project$LoL$LegendPage$view = F2(
 										[
 											$elm$html$Html$Attributes$class('skill-menu-item'),
 											$elm$html$Html$Events$onClick(
-											$author$project$Types$ShowAbilityDesc(legend.abilities.r))
+											$author$project$Types$ShowAbilityDesc(legendAbility.r))
 										]),
 									_List_fromArray(
 										[
-											$elm$html$Html$text(legend.abilities.r.name)
+											$elm$html$Html$text(legendAbility.r.name)
 										]))
 								])),
 							$author$project$LoL$LoLUpdate$mkDescription(model),
@@ -11069,15 +11128,7 @@ var $author$project$LoL$LegendSelect$mkLegend = function (legend) {
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
-						A2($elm$html$Html$Attributes$style, 'background-color', 'seagreen'),
-						A2($elm$html$Html$Attributes$style, 'height', '100px'),
-						A2($elm$html$Html$Attributes$style, 'width', '100px'),
-						A2($elm$html$Html$Attributes$style, 'margin', '10px'),
-						A2($elm$html$Html$Attributes$style, 'color', 'white'),
-						A2($elm$html$Html$Attributes$style, 'font-size', '10px'),
-						A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-						A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
-						A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
+						$elm$html$Html$Attributes$class('legend'),
 						$elm$html$Html$Events$onClick(
 						$author$project$Types$Select(legend))
 					]),
@@ -11126,11 +11177,7 @@ var $author$project$View$view = function (model) {
 							[
 								A2(
 								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$SetPageID($author$project$Types$LoL))
-									]),
+								_List_Nil,
 								_List_fromArray(
 									[
 										$elm$html$Html$text('LoL')
@@ -11146,11 +11193,7 @@ var $author$project$View$view = function (model) {
 							[
 								A2(
 								$elm$html$Html$button,
-								_List_fromArray(
-									[
-										$elm$html$Html$Events$onClick(
-										$author$project$Types$SetPageID($author$project$Types$Marginal))
-									]),
+								_List_Nil,
 								_List_fromArray(
 									[
 										$elm$html$Html$text('Marginal')
@@ -11177,84 +11220,7 @@ var $author$project$View$view = function (model) {
 				var _v0 = model.url.path;
 				switch (_v0) {
 					case '/main':
-						return A2(
-							$elm$html$Html$div,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-									A2($elm$html$Html$Attributes$style, 'flex', 'row'),
-									A2($elm$html$Html$Attributes$style, 'height', '5%')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$Decrement)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('-')
-										])),
-									A2(
-									$elm$html$Html$div,
-									_List_Nil,
-									_List_fromArray(
-										[
-											$elm$html$Html$text(
-											$elm$core$String$fromInt(model.countedValue))
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$Increment)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('+')
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$Reset)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('reset')
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick(
-											$author$project$Types$Set(15))
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('set to 15')
-										])),
-									A2(
-									$elm$html$Html$input,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$placeholder('Write a number'),
-											$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
-										]),
-									_List_Nil),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('press')
-										]))
-								]));
+						return $author$project$Counting$view(model);
 					case '/marginal':
 						return A2(
 							$elm$html$Html$div,
@@ -11314,4 +11280,4 @@ var $author$project$View$view = function (model) {
 var $author$project$Main$main = $elm$browser$Browser$application(
 	{init: $author$project$Init$init, onUrlChange: $author$project$Types$UrlChanged, onUrlRequest: $author$project$Types$LinkClicked, subscriptions: $author$project$Init$subscriptions, update: $author$project$Update$update, view: $author$project$View$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Types.Event","aliases":{"LoL.Types.Abilities":{"args":[],"type":"{ p : LoL.Types.Ability, q : LoL.Types.Ability, w : LoL.Types.Ability, e : LoL.Types.Ability, r : LoL.Types.Ability, spotlight : LoL.Types.Ability }"},"LoL.Types.Ability":{"args":[],"type":"{ cooldown : Basics.Float, damage : Basics.Float, range : Basics.Float, castTime : String.String, useType : LoL.Types.UseType, video : String.String, name : String.String }"},"LoL.Types.Legend":{"args":[],"type":"{ firstName : String.String, lastName : String.String, fraction : String.String, bio : String.String, photo : String.String, abilities : LoL.Types.Abilities }"},"Url.Url":{"args":[],"type":"{ protocol : Url.Protocol, host : String.String, port_ : Maybe.Maybe Basics.Int, path : String.String, query : Maybe.Maybe String.String, fragment : Maybe.Maybe String.String }"}},"unions":{"Types.Event":{"args":[],"tags":{"Increment":[],"Decrement":[],"Reset":[],"Set":["Basics.Int"],"UpdateCounter":[],"InputHandler":["String.String"],"IncreaseMarginal":[],"Select":["LoL.Types.Legend"],"SetPageID":["Types.PageID"],"ShowAbilityDesc":["LoL.Types.Ability"],"LinkClicked":["Browser.UrlRequest"],"UrlChanged":["Url.Url"]}},"Basics.Float":{"args":[],"tags":{"Float":[]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"Maybe.Maybe":{"args":["a"],"tags":{"Just":["a"],"Nothing":[]}},"Types.PageID":{"args":[],"tags":{"Main":[],"Marginal":[],"LoL":[],"LegendPage":["LoL.Types.Legend"]}},"Url.Protocol":{"args":[],"tags":{"Http":[],"Https":[]}},"String.String":{"args":[],"tags":{"String":[]}},"Browser.UrlRequest":{"args":[],"tags":{"Internal":["Url.Url"],"External":["String.String"]}},"LoL.Types.UseType":{"args":[],"tags":{"Target":[],"AoE":[],"Skillshot":[]}}}}})}});}(this));
+	$elm$json$Json$Decode$succeed(_Utils_Tuple0))({"versions":{"elm":"0.19.1"},"types":{"message":"Types.Event","aliases":{"LoL.Types.Abilities":{"args":[],"type":"{ p : LoL.Types.Ability, q : LoL.Types.Ability, w : LoL.Types.Ability, e : LoL.Types.Ability, r : LoL.Types.Ability, spotlight : LoL.Types.Ability }"},"LoL.Types.Ability":{"args":[],"type":"{ cooldown : Basics.Float, damage : Basics.Float, range : Basics.Float, castTime : String.String, useType : LoL.Types.UseType, video : String.String, name : String.String }"},"LoL.Types.Legend":{"args":[],"type":"{ firstName : String.String, lastName : String.String, fraction : String.String, bio : String.String, photo : String.String, abilities : LoL.Types.Abilities }"},"Url.Url":{"args":[],"type":"{ protocol : Url.Protocol, host : String.String, port_ : Maybe.Maybe Basics.Int, path : String.String, query : Maybe.Maybe String.String, fragment : Maybe.Maybe String.String }"}},"unions":{"Types.Event":{"args":[],"tags":{"Increment":[],"Decrement":[],"Reset":[],"Set":["Basics.Int"],"UpdateCounter":[],"InputHandler":["String.String"],"IncreaseMarginal":[],"Select":["LoL.Types.Legend"],"ShowAbilityDesc":["LoL.Types.Ability"],"LinkClicked":["Browser.UrlRequest"],"UrlChanged":["Url.Url"]}},"Basics.Float":{"args":[],"tags":{"Float":[]}},"Basics.Int":{"args":[],"tags":{"Int":[]}},"Maybe.Maybe":{"args":["a"],"tags":{"Just":["a"],"Nothing":[]}},"Url.Protocol":{"args":[],"tags":{"Http":[],"Https":[]}},"String.String":{"args":[],"tags":{"String":[]}},"Browser.UrlRequest":{"args":[],"tags":{"Internal":["Url.Url"],"External":["String.String"]}},"LoL.Types.UseType":{"args":[],"tags":{"Target":[],"AoE":[],"Skillshot":[]}}}}})}});}(this));

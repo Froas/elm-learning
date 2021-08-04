@@ -104,4 +104,29 @@ p {
 .header {
   flex: 1;
   max-height: 5%;
+  background-color: blue;
+}
+
+.legend {         
+  background-color: seagreen;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  color:white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.margo {
+  background-color: black;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  color: white;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,25 +1,16 @@
 module View exposing (..)
 
 
+import Browser
+import Counting
+import MarginalSquare
+import LoL.LegendPage
+import LoL.LegendSelect
 import Types exposing (..)
 import Init exposing (..)
-import Html exposing (button, div, text, input, a)
-import Html.Events exposing (..)
-import Html.Attributes exposing (..)
-import MarginalSquare
-import LoL.LegendSelect
-import Html exposing (header)
-import Browser
-import LoL.LegendPage
-
-import Html exposing (legend)
-
-
-
-
-
-
-
+import Html exposing (button, div, text, a, header, legend)
+import Html.Events exposing (onClick)
+import Html.Attributes exposing (class, href)
 
 view : Model -> Browser.Document Event
 view model =
@@ -29,30 +20,14 @@ view model =
 
             [ class "header"]
 
-            [ a [ href "http://localhost:8000/lol" ]
-                [ button [ onClick <| SetPageID LoL ] [ text "LoL" ] ]
-            , a [ href "http://localhost:8000/marginal" ]
-                [ button [ onClick <| SetPageID Marginal ] [ text "Marginal" ] ]
-            , a [ href "http://localhost:8000/main" ] 
-                [ button [] [ text "Main"] ]
+            [ a [ href "http://localhost:8000/lol" ] [ button [] [ text "LoL" ] ]
+            , a [ href "http://localhost:8000/marginal" ] [ button [] [ text "Marginal" ] ]
+            , a [ href "http://localhost:8000/main" ] [ button [] [ text "Main"] ]
             ]
 
             , case model.url.path of
                 "/main" ->
-                    div [ style "display" "flex" 
-                        , style "flex" "row"
-                        , style "height" "5%" 
-                        ]  
-
-                        [ button [ onClick Decrement ] [ text "-" ]
-                        , div [] [ text <| String.fromInt model.countedValue ]
-                        , button [ onClick Increment ] [ text "+" ]
-                        , button [ onClick Reset ] [ text "reset"]
-                        , button [ onClick <|  Set 15 ] [ text "set to 15" ]
-                        , input [ placeholder "Write a number", onInput InputHandler ] []
-                        , button [ onClick UpdateCounter ] [ text "press" ]
-
-                        ]
+                   Counting.view model
 
                 "/marginal" ->
                     div [] 

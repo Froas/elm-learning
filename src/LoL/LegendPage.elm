@@ -7,10 +7,16 @@ import Html.Attributes exposing (..)
 import LoL.Types exposing (..)
 import Html.Events exposing (onClick)
 import LoL.LoLUpdate exposing (mkDescription, mkAbilityVideo)
+import Debug exposing (toString)
+import Maybe exposing (withDefault)
 
 
 view : Model -> Legend -> Html Event
 view model legend  =
+    let
+        legendAbility = legend.abilities
+    in
+    
     div 
         [ class "main-container" ] 
         
@@ -36,20 +42,18 @@ view model legend  =
             [ div 
                 [ class "skill-menu" ]
 
-                [ div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.spotlight ] [ text "Spotlight" ]
-                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.p ] [ text legend.abilities.p.name ]
-                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.q ] [ text legend.abilities.q.name ]
-                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.w ] [ text legend.abilities.w.name ]
-                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.e ] [ text legend.abilities.e.name ]
-                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legend.abilities.r ] [ text legend.abilities.r.name ]                 
+                [ div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.spotlight ] [ text "Spotlight" ]
+                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.p ] [ text legendAbility.p.name ]
+                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.q ] [ text legendAbility.q.name ]
+                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.w ] [ text legendAbility.w.name ]
+                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.e ] [ text legendAbility.e.name ]
+                , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.r ] [ text legendAbility.r.name ]   
+                -- , div [] <| List.map(\x -> legend.abilities.x ) legend.abilities            
                 ]
 
             , mkDescription model
-
             , mkAbilityVideo model
-
             ]
-
         ]
 
 
