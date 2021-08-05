@@ -2,42 +2,30 @@ module View exposing (..)
 
 
 import Browser
+import Header 
 import Counting
 import MarginalSquare
 import LoL.LegendPage
 import LoL.LegendSelect
 import Types exposing (..)
-import Init exposing (..)
-import Html exposing (button, div, text, a, header, legend)
-import Html.Events exposing (onClick)
-import Html.Attributes exposing (class, href)
+import Html exposing (text, div)
+
 
 view : Model -> Browser.Document Event
 view model =
     { title = "My project"
     , body = 
-        [ header 
-
-            [ class "header"]
-
-            [ a [ href "http://localhost:8000/lol" ] [ button [] [ text "LoL" ] ]
-            , a [ href "http://localhost:8000/marginal" ] [ button [] [ text "Marginal" ] ]
-            , a [ href "http://localhost:8000/main" ] [ button [] [ text "Main"] ]
-            ]
+        [   Header.view
 
             , case model.url.path of
                 "/main" ->
                    Counting.view model
 
                 "/marginal" ->
-                    div [] 
-
-                        [ button [ onClick IncreaseMarginal ] [ text "increase marginal" ]
-                        , MarginalSquare.mkMarginals model
-                        ]
+                    MarginalSquare.view model
 
                 "/lol" ->
-                    div [] [ LoL.LegendSelect.view model ]
+                    LoL.LegendSelect.view model
 
                 path ->  
                     let 
@@ -57,6 +45,7 @@ view model =
                         else text "404"
             ]
     }
+
 
     
     

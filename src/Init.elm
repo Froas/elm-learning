@@ -6,7 +6,6 @@ import Types exposing (..)
 import LoL.Types exposing (..)
 import Browser.Navigation as Nav
 
-
 init : () -> Url -> Nav.Key -> ( Model, Cmd Event )
 init flags url key = 
     (

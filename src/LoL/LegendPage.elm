@@ -7,8 +7,7 @@ import Html.Attributes exposing (..)
 import LoL.Types exposing (..)
 import Html.Events exposing (onClick)
 import LoL.LoLUpdate exposing (mkDescription, mkAbilityVideo)
-import Debug exposing (toString)
-import Maybe exposing (withDefault)
+
 
 
 view : Model -> Legend -> Html Event

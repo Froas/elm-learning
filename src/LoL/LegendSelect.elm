@@ -1,9 +1,9 @@
 module LoL.LegendSelect exposing (..)
 
 
+import Types exposing (..)
 import Html exposing (div,a, Html, text) 
 import Html.Attributes exposing (class, href, style)
-import Types exposing (..)
 import LoL.Types exposing (Legend)
 import Html.Events exposing (onClick)
 

@@ -10749,7 +10749,6 @@ var $author$project$Update$update = F2(
 					$elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Types$IncreaseMarginal = {$: 'IncreaseMarginal'};
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
 		return A3(
@@ -10761,32 +10760,6 @@ var $elm$core$List$filter = F2(
 			_List_Nil,
 			list);
 	});
-var $elm$html$Html$header = _VirtualDom_node('header');
-var $elm$core$Debug$toString = _Debug_toString;
-var $author$project$MarginalSquare$view = function (margoId) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('margo')
-			]),
-		_List_fromArray(
-			[
-				$elm$html$Html$text(
-				$elm$core$Debug$toString(margoId))
-			]));
-};
-var $author$project$MarginalSquare$mkMarginals = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		A2(
-			$elm$core$List$map,
-			function (x) {
-				return $author$project$MarginalSquare$view(x);
-			},
-			A2($elm$core$List$range, 1, model.repeatValue)));
-};
 var $elm$core$String$toUpper = _String_toUpper;
 var $author$project$Types$Decrement = {$: 'Decrement'};
 var $author$project$Types$Increment = {$: 'Increment'};
@@ -10879,6 +10852,64 @@ var $author$project$Counting$view = function (model) {
 					]))
 			]));
 };
+var $elm$html$Html$header = _VirtualDom_node('header');
+var $author$project$Header$view = A2(
+	$elm$html$Html$header,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('header')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('http://localhost:8000/lol')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('LoL')
+						]))
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('http://localhost:8000/marginal')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Marginal')
+						]))
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('http://localhost:8000/main')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Main')
+						]))
+				]))
+		]));
 var $author$project$Types$ShowAbilityDesc = function (a) {
 	return {$: 'ShowAbilityDesc', a: a};
 };
@@ -10916,6 +10947,7 @@ var $author$project$LoL$LoLUpdate$mkAbilityVideo = function (model) {
 			]),
 		_List_Nil);
 };
+var $elm$core$Debug$toString = _Debug_toString;
 var $author$project$LoL$LoLUpdate$mkDescription = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -11155,98 +11187,61 @@ var $author$project$LoL$LegendSelect$view = function (model) {
 			]),
 		A2($elm$core$List$map, $author$project$LoL$LegendSelect$mkLegend, model.legends));
 };
+var $author$project$Types$IncreaseMarginal = {$: 'IncreaseMarginal'};
+var $author$project$MarginalSquare$mkMarginals = function (margoId) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('margo')
+			]),
+		_List_fromArray(
+			[
+				$elm$html$Html$text(
+				$elm$core$Debug$toString(margoId))
+			]));
+};
+var $author$project$MarginalSquare$view = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('increase marginal')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				A2(
+					$elm$core$List$map,
+					function (x) {
+						return $author$project$MarginalSquare$mkMarginals(x);
+					},
+					A2($elm$core$List$range, 1, model.repeatValue)))
+			]));
+};
 var $author$project$View$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
-				A2(
-				$elm$html$Html$header,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('header')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$a,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href('http://localhost:8000/lol')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('LoL')
-									]))
-							])),
-						A2(
-						$elm$html$Html$a,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href('http://localhost:8000/marginal')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Marginal')
-									]))
-							])),
-						A2(
-						$elm$html$Html$a,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$href('http://localhost:8000/main')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$button,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Main')
-									]))
-							]))
-					])),
+				$author$project$Header$view,
 				function () {
 				var _v0 = model.url.path;
 				switch (_v0) {
 					case '/main':
 						return $author$project$Counting$view(model);
 					case '/marginal':
-						return A2(
-							$elm$html$Html$div,
-							_List_Nil,
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Events$onClick($author$project$Types$IncreaseMarginal)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('increase marginal')
-										])),
-									$author$project$MarginalSquare$mkMarginals(model)
-								]));
+						return $author$project$MarginalSquare$view(model);
 					case '/lol':
-						return A2(
-							$elm$html$Html$div,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$author$project$LoL$LegendSelect$view(model)
-								]));
+						return $author$project$LoL$LegendSelect$view(model);
 					default:
 						var path = _v0;
 						var legendName = A2($elm$core$String$dropLeft, 12, path);

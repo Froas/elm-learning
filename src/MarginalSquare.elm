@@ -1,12 +1,19 @@
 module MarginalSquare exposing (..)
 
-import Types exposing (Model, Event)
-import Html exposing (Html, div, text)
+import Types exposing (..)
+import Html exposing (Html, div, text, button)
 import Debug exposing (toString)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 
-view : Int -> Html Event
-view margoId = div [ class "margo"] [ text <| toString margoId ]
+mkMarginals : Int -> Html Event
+mkMarginals margoId = div [ class "margo"] [ text <| toString margoId ]
 
-mkMarginals : Model -> Html Event
-mkMarginals model = div [] <| List.map (\x -> view x) <| List.range 1 model.repeatValue 
+
+view : Model -> Html Event
+view model = 
+    div []
+
+        [ button [ onClick IncreaseMarginal ] [ text "increase marginal" ] 
+        , div [] <| List.map (\x -> mkMarginals x) <| List.range 1 model.repeatValue 
+        ]
