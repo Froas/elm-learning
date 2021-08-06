@@ -1,13 +1,15 @@
 module LoL.LegendSelect exposing (..)
 
 
+import LoL.LegendPage
 import Types exposing (..)
 import Html exposing (div,a, Html, text) 
-import Html.Attributes exposing (class, href, style)
+import Html.Attributes exposing (class, href)
 import LoL.Types exposing (Legend)
 import Html.Events exposing (onClick)
 
-
+view : Model -> Html Event
+view model = div [ class "legendSelect"] <| List.map mkLegend model.legends
 
 mkLegend : Legend -> Html Event
 mkLegend legend =
@@ -19,17 +21,24 @@ mkLegend legend =
             ]
             [ text <| String.join " " [ legend.firstName, legend.lastName ] ]
         ]
-    
-        
-view : Model -> Html Event
-view model = 
-    div 
-        [ style "display" "flex"
-        , style "flex-direction" "row"
-        , style "width" "1000px"
-        , style "height" "1000px"
-        ] 
-        <| List.map mkLegend model.legends
+          
+mkLegendView : Model -> String -> Html Event
+mkLegendView model path = 
+                    let 
+                        initPath = String.left 12 path
+                        legendName = String.dropLeft 12 path 
+                        legendNameCapitalized = String.toUpper (String.left 1 legendName)  ++  String.dropLeft 1 legendName
+                        filteredLegends = List.filter (\legend -> legendNameCapitalized == legend.firstName) model.legends 
+
+                    in
+                        if initPath == "/lol/legend/"
+
+                        then    
+                            case filteredLegends of 
+                                [legend] -> LoL.LegendPage.view model legend 
+
+                                _        -> div [] []
+                        else text "404"
 
 
 

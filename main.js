@@ -10544,13 +10544,13 @@ var $elm$core$Basics$never = function (_v0) {
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$LoL$Types$AoE = {$: 'AoE'};
 var $author$project$LoL$Types$Target = {$: 'Target'};
-var $author$project$Init$katarina = {
+var $author$project$LoL$Legends$katarina = {
 	abilities: {
 		e: {castTime: '0.035', cooldown: 14, damage: 15, name: 'Shunpo', range: 725, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_E1.webm'},
 		p: {castTime: 'None ', cooldown: 15, damage: 68, name: 'Voracity', range: 340, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_P1.webm'},
 		q: {castTime: '0.25', cooldown: 11, damage: 75, name: 'Bouncing Blade', range: 625, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_Q1.webm'},
 		r: {castTime: 'None', cooldown: 90, damage: 375, name: 'Death Lotus', range: 550, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_R1.webm'},
-		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/soCg5RbgYIA'},
+		spotlight: {castTime: '', cooldown: 1, damage: 1, name: ' ', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/soCg5RbgYIA'},
 		w: {castTime: 'None', cooldown: 15, damage: 50, name: 'Preparation', range: 250, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0055/ability_0055_W1.webm'}
 	},
 	bio: 'Born to one of the most respected noble families of Noxus, Katarina Du Couteau found herself elevated above others from an early age. While her younger sister Cassiopeia took after their politically brilliant mother, Katarina was very much her father’s daughter, and the wily General Du Couteau pushed her to learn the way of the blade; to cut away the empire’s enemies not with reckless brutality, but deadly precision. He was a harsh teacher with many pupils, and notoriously difficult to impress. So it was that Katarina’s childhood—if it can be called such—had little room for kindness or rest. She spent every waking moment honing herself into the ultimate weapon, testing her endurance, her dexterity, her tolerance for pain. She stole poisons from the city’s least reputable apothecaries, testing their efficacy in tiny increments upon herself, gradually building her resistance even as she catalogued their effects. She scaled the tallest towers in the dead of night, unseen by anyone.',
@@ -10559,13 +10559,13 @@ var $author$project$Init$katarina = {
 	lastName: 'Du Couteau',
 	photo: 'https://cdnportal.mobalytics.gg/production/2021/03/7027b46a-d8jhqfo-aed71994-3e18-46f8-984c-b68c1e356ce7.jpg'
 };
-var $author$project$Init$kindred = {
+var $author$project$LoL$Legends$kindred = {
 	abilities: {
 		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
 		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
 		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
 		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
-		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/h0Pwn7G-eLE'},
+		spotlight: {castTime: ' ', cooldown: 1, damage: 1, name: ' ', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/h0Pwn7G-eLE'},
 		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
 	},
 	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
@@ -10574,32 +10574,32 @@ var $author$project$Init$kindred = {
 	lastName: ' ',
 	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
 };
-var $author$project$Init$yuumi = {
+var $author$project$LoL$Legends$yuumi = {
 	abilities: {
-		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Mounting Dread', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_E1.webm'},
-		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Mark of the Kindred', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_P1.webm'},
-		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Dance of Arrows', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_Q1.webm'},
-		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_R1.webm'},
-		spotlight: {castTime: 'None', cooldown: 1, damage: 1, name: 'Lamb\'s Respite', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/h0Pwn7G-eLE'},
-		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'Wolf\'s Frenzy', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0203/ability_0203_W1.webm'}
+		e: {castTime: '0.035', cooldown: 1, damage: 1, name: 'Zoomies', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0350/ability_0350_E1.webm'},
+		p: {castTime: 'None ', cooldown: 1, damage: 1, name: 'Bop \'n\' Block', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0350/ability_0350_P1.webm'},
+		q: {castTime: '0.25', cooldown: 1, damage: 1, name: 'Prowling Projectile', range: 1, useType: $author$project$LoL$Types$Target, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0350/ability_0350_P1.webm'},
+		r: {castTime: 'None', cooldown: 1, damage: 1, name: 'Final Chapter', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0350/ability_0350_R1.webm'},
+		spotlight: {castTime: ' ', cooldown: 1, damage: 1, name: 'Yuumi Champion Spotlight', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://www.youtube.com/embed/TYkvBijQccA'},
+		w: {castTime: 'None', cooldown: 1, damage: 1, name: 'You and Me!', range: 1, useType: $author$project$LoL$Types$AoE, video: 'https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0350/ability_0350_W1.webm'}
 	},
-	bio: 'Separate, but never parted, Kindred represents the twin essences of death. Lamb’s bow offers a swift release from the mortal realm for those who accept their fate. Wolf hunts down those who run from their end, delivering violent finality within his crushing jaws. Though interpretations of Kindred’s nature vary across Runeterra, every mortal must choose the true face of their death. Kindred is the white embrace of nothingness and the gnashing of teeth in the dark. Shepherd and the butcher, poet and the primitive, they are one and both. When caught on the edge of life, louder than any trumpeting horn, it is the hammering pulse at one’s throat that calls Kindred to their hunt. Stand and greet Lamb’s silvered bow and her arrows will lay you down swiftly. If you refuse her, Wolf will join you for his merry hunt, where every chase runs to its brutal end. ',
+	bio: 'A magical cat from Bandle City, Yuumi was once the familiar of a yordle enchantress, Norra. When her master mysteriously disappeared, Yuumi became the Keeper of Norra\'s sentient Book of Thresholds, traveling through portals in its pages to search for her. Yearning for affection, Yuumi seeks friendly companions to partner with on her journey, protecting them with luminous shields and fierce resolve. While Book strives to keep her on task, Yuumi is often drawn to worldly comforts, such as naps and fish. In the end, however, she always returns to her quest to find her friend. ',
 	firstName: 'Yuumi',
 	fraction: 'Noxus',
 	lastName: ' ',
-	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kindred_0.jpg'
+	photo: 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yuumi_0.jpg'
 };
 var $author$project$Init$init = F3(
 	function (flags, url, key) {
 		return _Utils_Tuple2(
 			{
 				countedValue: 0,
-				currAbility: $author$project$Init$katarina.abilities.spotlight,
-				currLegend: $author$project$Init$katarina,
+				currAbility: $author$project$LoL$Legends$katarina.abilities.spotlight,
+				currLegend: $author$project$LoL$Legends$katarina,
 				inputValue: '',
 				key: key,
 				legends: _List_fromArray(
-					[$author$project$Init$katarina, $author$project$Init$kindred, $author$project$Init$yuumi]),
+					[$author$project$LoL$Legends$katarina, $author$project$LoL$Legends$kindred, $author$project$LoL$Legends$yuumi]),
 				repeatValue: 1,
 				url: url
 			},
@@ -10761,155 +10761,6 @@ var $elm$core$List$filter = F2(
 			list);
 	});
 var $elm$core$String$toUpper = _String_toUpper;
-var $author$project$Types$Decrement = {$: 'Decrement'};
-var $author$project$Types$Increment = {$: 'Increment'};
-var $author$project$Types$InputHandler = function (a) {
-	return {$: 'InputHandler', a: a};
-};
-var $author$project$Types$Reset = {$: 'Reset'};
-var $author$project$Types$Set = function (a) {
-	return {$: 'Set', a: a};
-};
-var $author$project$Types$UpdateCounter = {$: 'UpdateCounter'};
-var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
-var $author$project$Counting$view = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'flex', 'row'),
-				A2($elm$html$Html$Attributes$style, 'height', '5%')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$button,
-				_List_fromArray(
-					[
-						$elm$html$Html$Events$onClick($author$project$Types$Decrement)
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('-')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(
-						$elm$core$String$fromInt(model.countedValue))
-					])),
-				A2(
-				$elm$html$Html$button,
-				_List_fromArray(
-					[
-						$elm$html$Html$Events$onClick($author$project$Types$Increment)
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('+')
-					])),
-				A2(
-				$elm$html$Html$button,
-				_List_fromArray(
-					[
-						$elm$html$Html$Events$onClick($author$project$Types$Reset)
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('reset')
-					])),
-				A2(
-				$elm$html$Html$button,
-				_List_fromArray(
-					[
-						$elm$html$Html$Events$onClick(
-						$author$project$Types$Set(15))
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('set to 15')
-					])),
-				A2(
-				$elm$html$Html$input,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$placeholder('Write a number'),
-						$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
-					]),
-				_List_Nil),
-				A2(
-				$elm$html$Html$button,
-				_List_fromArray(
-					[
-						$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('press')
-					]))
-			]));
-};
-var $elm$html$Html$header = _VirtualDom_node('header');
-var $author$project$Header$view = A2(
-	$elm$html$Html$header,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('header')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$href('http://localhost:8000/lol')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$button,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('LoL')
-						]))
-				])),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$href('http://localhost:8000/marginal')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$button,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Marginal')
-						]))
-				])),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$href('http://localhost:8000/main')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$button,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Main')
-						]))
-				]))
-		]));
 var $author$project$Types$ShowAbilityDesc = function (a) {
 	return {$: 'ShowAbilityDesc', a: a};
 };
@@ -10949,6 +10800,7 @@ var $author$project$LoL$LoLUpdate$mkAbilityVideo = function (model) {
 };
 var $elm$core$Debug$toString = _Debug_toString;
 var $author$project$LoL$LoLUpdate$mkDescription = function (model) {
+	var ability = model.currAbility;
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -10963,7 +10815,7 @@ var $author$project$LoL$LoLUpdate$mkDescription = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						'Abilities: ' + (model.currAbility.name + ((_Utils_eq(model.currAbility.useType, $author$project$LoL$Types$AoE) ? ' Effect Radius ' : ' Target range ') + ($elm$core$Debug$toString(model.currAbility.range) + (' Cast time: ' + (model.currAbility.castTime + (' Cooldown ' + $elm$core$Debug$toString(model.currAbility.cooldown))))))))
+						'Abilities: ' + (ability.name + ((_Utils_eq(ability.useType, $author$project$LoL$Types$AoE) ? ' Effect Radius ' : ' Target range ') + ($elm$core$Debug$toString(ability.range) + (' Cast time: ' + (ability.castTime + (' Cooldown ' + $elm$core$Debug$toString(ability.cooldown))))))))
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -11135,13 +10987,196 @@ var $author$project$LoL$LegendPage$view = F2(
 									_List_fromArray(
 										[
 											$elm$html$Html$text(legendAbility.r.name)
-										]))
+										])),
+									A2(
+									$elm$html$Html$div,
+									_List_Nil,
+									A2(
+										$elm$core$List$map,
+										function (x) {
+											return $elm$html$Html$text(
+												'Animeeee' + ($elm$core$Debug$toString(x) + 'ANiMEEEEEEEEEEEEEEE'));
+										},
+										_List_fromArray(
+											[legendAbility])))
 								])),
 							$author$project$LoL$LoLUpdate$mkDescription(model),
 							$author$project$LoL$LoLUpdate$mkAbilityVideo(model)
 						]))
 				]));
 	});
+var $author$project$LoL$LegendSelect$mkLegendView = F2(
+	function (model, path) {
+		var legendName = A2($elm$core$String$dropLeft, 12, path);
+		var legendNameCapitalized = _Utils_ap(
+			$elm$core$String$toUpper(
+				A2($elm$core$String$left, 1, legendName)),
+			A2($elm$core$String$dropLeft, 1, legendName));
+		var initPath = A2($elm$core$String$left, 12, path);
+		var filteredLegends = A2(
+			$elm$core$List$filter,
+			function (legend) {
+				return _Utils_eq(legendNameCapitalized, legend.firstName);
+			},
+			model.legends);
+		if (initPath === '/lol/legend/') {
+			if (filteredLegends.b && (!filteredLegends.b.b)) {
+				var legend = filteredLegends.a;
+				return A2($author$project$LoL$LegendPage$view, model, legend);
+			} else {
+				return A2($elm$html$Html$div, _List_Nil, _List_Nil);
+			}
+		} else {
+			return $elm$html$Html$text('404');
+		}
+	});
+var $author$project$Types$Decrement = {$: 'Decrement'};
+var $author$project$Types$Increment = {$: 'Increment'};
+var $author$project$Types$InputHandler = function (a) {
+	return {$: 'InputHandler', a: a};
+};
+var $author$project$Types$Reset = {$: 'Reset'};
+var $author$project$Types$Set = function (a) {
+	return {$: 'Set', a: a};
+};
+var $author$project$Types$UpdateCounter = {$: 'UpdateCounter'};
+var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProperty('placeholder');
+var $author$project$Counting$view = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('counter')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$Decrement)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('-')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text(
+						$elm$core$String$fromInt(model.countedValue))
+					])),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$Increment)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('+')
+					])),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$Reset)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('reset')
+					])),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick(
+						$author$project$Types$Set(15))
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('set to 15')
+					])),
+				A2(
+				$elm$html$Html$input,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$placeholder('Write a number'),
+						$elm$html$Html$Events$onInput($author$project$Types$InputHandler)
+					]),
+				_List_Nil),
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Types$UpdateCounter)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('press')
+					]))
+			]));
+};
+var $elm$html$Html$header = _VirtualDom_node('header');
+var $author$project$Header$view = A2(
+	$elm$html$Html$header,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('header')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('http://localhost:8000/lol')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('LoL')
+						]))
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('http://localhost:8000/marginal')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Marginal')
+						]))
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('http://localhost:8000/main')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$button,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Main')
+						]))
+				]))
+		]));
 var $author$project$Types$Select = function (a) {
 	return {$: 'Select', a: a};
 };
@@ -11180,10 +11215,7 @@ var $author$project$LoL$LegendSelect$view = function (model) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'flex-direction', 'row'),
-				A2($elm$html$Html$Attributes$style, 'width', '1000px'),
-				A2($elm$html$Html$Attributes$style, 'height', '1000px')
+				$elm$html$Html$Attributes$class('legendSelect')
 			]),
 		A2($elm$core$List$map, $author$project$LoL$LegendSelect$mkLegend, model.legends));
 };
@@ -11244,28 +11276,7 @@ var $author$project$View$view = function (model) {
 						return $author$project$LoL$LegendSelect$view(model);
 					default:
 						var path = _v0;
-						var legendName = A2($elm$core$String$dropLeft, 12, path);
-						var legendNameCapitalized = _Utils_ap(
-							$elm$core$String$toUpper(
-								A2($elm$core$String$left, 1, legendName)),
-							A2($elm$core$String$dropLeft, 1, legendName));
-						var initPath = A2($elm$core$String$left, 12, path);
-						var filteredLegends = A2(
-							$elm$core$List$filter,
-							function (legend) {
-								return _Utils_eq(legendNameCapitalized, legend.firstName);
-							},
-							model.legends);
-						if (initPath === '/lol/legend/') {
-							if (filteredLegends.b && (!filteredLegends.b.b)) {
-								var legend = filteredLegends.a;
-								return A2($author$project$LoL$LegendPage$view, model, legend);
-							} else {
-								return A2($elm$html$Html$div, _List_Nil, _List_Nil);
-							}
-						} else {
-							return $elm$html$Html$text('404');
-						}
+						return A2($author$project$LoL$LegendSelect$mkLegendView, model, path);
 				}
 			}()
 			]),

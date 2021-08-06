@@ -130,3 +130,16 @@ p {
   align-items: center;
   justify-content: center;
 }
+
+.counter {
+  display: flex;
+  flex: row;
+  height: 5%;
+}
+
+.legendSelect {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
+  height: 1000px;
+}

@@ -7,8 +7,7 @@ import Html.Attributes exposing (..)
 import LoL.Types exposing (..)
 import Html.Events exposing (onClick)
 import LoL.LoLUpdate exposing (mkDescription, mkAbilityVideo)
-
-
+import Debug exposing (toString)
 
 view : Model -> Legend -> Html Event
 view model legend  =
@@ -37,7 +36,6 @@ view model legend  =
         , div 
             [ class "second-container"]
             
-            
             [ div 
                 [ class "skill-menu" ]
 
@@ -47,7 +45,7 @@ view model legend  =
                 , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.w ] [ text legendAbility.w.name ]
                 , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.e ] [ text legendAbility.e.name ]
                 , div [ class "skill-menu-item", onClick <| ShowAbilityDesc legendAbility.r ] [ text legendAbility.r.name ]   
-                -- , div [] <| List.map(\x -> legend.abilities.x ) legend.abilities            
+                , div [] <| List.map(\x -> text <| "Animeeee" ++ toString x ++ "ANiMEEEEEEEEEEEEEEE") [legendAbility]
                 ]
 
             , mkDescription model

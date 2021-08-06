@@ -6,6 +6,7 @@ import Browser.Navigation as Nav
 import Url exposing (..)
 import LoL.Types exposing (Legend,Ability)
 
+
 type Event 
     = Increment 
     | Decrement 

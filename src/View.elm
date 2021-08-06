@@ -5,45 +5,27 @@ import Browser
 import Header 
 import Counting
 import MarginalSquare
-import LoL.LegendPage
 import LoL.LegendSelect
 import Types exposing (..)
-import Html exposing (text, div)
+
 
 
 view : Model -> Browser.Document Event
 view model =
     { title = "My project"
     , body = 
-        [   Header.view
+        [ Header.view
 
-            , case model.url.path of
-                "/main" ->
-                   Counting.view model
-
-                "/marginal" ->
-                    MarginalSquare.view model
-
-                "/lol" ->
-                    LoL.LegendSelect.view model
-
-                path ->  
-                    let 
-                        initPath = String.left 12 path
-                        legendName = String.dropLeft 12 path 
-                        legendNameCapitalized = String.toUpper (String.left 1 legendName)  ++  String.dropLeft 1 legendName
-                        filteredLegends = List.filter (\legend -> legendNameCapitalized == legend.firstName) model.legends 
-
-                    in
-                        if initPath == "/lol/legend/"
-
-                        then    
-                            case filteredLegends of 
-                                [legend] -> LoL.LegendPage.view model legend 
-
-                                _        -> div [] []
-                        else text "404"
-            ]
+        , case model.url.path of
+            "/main" ->
+               Counting.view model
+            "/marginal" ->
+                MarginalSquare.view model
+            "/lol" ->
+                LoL.LegendSelect.view model
+            path ->  
+                LoL.LegendSelect.mkLegendView model path
+        ]
     }
 
 

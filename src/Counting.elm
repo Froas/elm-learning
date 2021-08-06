@@ -3,15 +3,13 @@ module Counting exposing (..)
 
 import Types exposing (..)
 import Html exposing (Html,div, text, button, input)
-import Html.Attributes exposing (style, placeholder)
+import Html.Attributes exposing (class, placeholder)
 import Html.Events exposing (onClick, onInput)
 
 view : Model -> Html Event
 view model =
-    div [ style "display" "flex" 
-        , style "flex" "row"
-        , style "height" "5%" 
-        ]
+    div 
+        [ class "counter"]
         
         [ button [ onClick Decrement ] [ text "-" ]
         , div [] [ text <| String.fromInt model.countedValue ]
